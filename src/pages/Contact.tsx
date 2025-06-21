@@ -10,9 +10,10 @@ export const Contact: React.FC = () => {
     company: '',
     subject: '',
     message: '',
-    contactMethod: 'email'
+    contactMethod: 'email',
+    // Honeypot field for spam protection
+    'bot-field': ''
   });
-  const [submitted, setSubmitted] = useState(false);
   
   const { contact } = settingsData;
 
@@ -20,47 +21,6 @@ export const Contact: React.FC = () => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Contact form submitted:', formData);
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center py-20">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white rounded-3xl p-12 shadow-soft-lg">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
-              <CheckCircle className="w-10 h-10 text-green-600" />
-            </div>
-            <h1 className="text-3xl font-bold text-primary-900 mb-4">
-              Message Sent Successfully!
-            </h1>
-            <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-              Thank you for contacting us. We've received your message and will respond within 24 hours.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/"
-                className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-xl font-semibold transition-colors duration-200"
-              >
-                Return to Home
-              </a>
-              <a
-                href="/services"
-                className="border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white px-8 py-3 rounded-xl font-semibold transition-all duration-200"
-              >
-                Explore Services
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -158,10 +118,10 @@ export const Contact: React.FC = () => {
                     Call Now
                   </a>
                   <a
-                    href="/request-quote"
+                    href="/consultation"
                     className="flex-1 border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 text-center"
                   >
-                    Request Quote
+                    Book Consultation
                   </a>
                 </div>
               </div>
@@ -173,7 +133,29 @@ export const Contact: React.FC = () => {
                 Send Us a Message
               </h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form 
+                name="contact"
+                method="POST"
+                action="/thank-you"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                className="space-y-6"
+              >
+                {/* Hidden fields for Netlify */}
+                <input type="hidden" name="form-name" value="contact" />
+                
+                {/* Honeypot field for spam protection */}
+                <div style={{ display: 'none' }}>
+                  <label>
+                    Don't fill this out if you're human:
+                    <input 
+                      name="bot-field" 
+                      value={formData['bot-field']}
+                      onChange={handleInputChange}
+                    />
+                  </label>
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-neutral-700 mb-2">

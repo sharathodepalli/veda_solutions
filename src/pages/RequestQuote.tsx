@@ -49,10 +49,10 @@ export const RequestQuote: React.FC = () => {
     budget: '',
     additionalInfo: '',
     preferredContact: 'email',
-    hearAboutUs: ''
+    hearAboutUs: '',
+    // Honeypot field for spam protection
+    'bot-field': ''
   });
-
-  const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -67,65 +67,6 @@ export const RequestQuote: React.FC = () => {
         : [...prev.services, service]
     }));
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center py-20">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white rounded-3xl p-12 shadow-soft-lg">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
-              <CheckCircle className="w-10 h-10 text-green-600" />
-            </div>
-            <h1 className="text-3xl font-bold text-primary-900 mb-4">
-              Thank You for Your Request!
-            </h1>
-            <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-              We've received your consultation request and will be in touch within 24 hours 
-              to discuss how we can help optimize your practice operations.
-            </p>
-            <div className="bg-neutral-50 rounded-2xl p-6 mb-8">
-              <h3 className="text-lg font-semibold text-primary-900 mb-4">What Happens Next?</h3>
-              <div className="space-y-3 text-left">
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</div>
-                  <span className="text-neutral-700">Our team will review your requirements and prepare a customized consultation</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</div>
-                  <span className="text-neutral-700">We'll schedule a convenient time to discuss your practice's specific needs</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</div>
-                  <span className="text-neutral-700">You'll receive a detailed proposal with pricing and implementation timeline</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/"
-                className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-xl font-semibold transition-colors duration-200"
-              >
-                Return to Home
-              </a>
-              <a
-                href="/services"
-                className="border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white px-8 py-3 rounded-xl font-semibold transition-all duration-200"
-              >
-                Explore Services
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -173,10 +114,10 @@ export const RequestQuote: React.FC = () => {
               <h3 className="text-lg font-semibold text-primary-900 mb-2">Call Us</h3>
               <p className="text-neutral-600 mb-4">Speak with a consultant right now</p>
               <a
-                href="tel:+15551234567"
+                href="tel:+15715647945"
                 className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200 inline-block"
               >
-                (555) 123-4567
+                (571) 564-7945
               </a>
             </div>
             <div className="text-center">
@@ -186,7 +127,7 @@ export const RequestQuote: React.FC = () => {
               <h3 className="text-lg font-semibold text-primary-900 mb-2">Email Us</h3>
               <p className="text-neutral-600 mb-4">Get detailed information via email</p>
               <a
-                href="mailto:info@vedhasolutions.com"
+                href="mailto:Contact@thevedhasolutions.com"
                 className="bg-accent-500 hover:bg-accent-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200 inline-block"
               >
                 Send Email
@@ -222,7 +163,29 @@ export const RequestQuote: React.FC = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form 
+              name="quote-request"
+              method="POST"
+              action="/thank-you"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              className="space-y-8"
+            >
+              {/* Hidden fields for Netlify */}
+              <input type="hidden" name="form-name" value="quote-request" />
+              
+              {/* Honeypot field for spam protection */}
+              <div style={{ display: 'none' }}>
+                <label>
+                  Don't fill this out if you're human:
+                  <input 
+                    name="bot-field" 
+                    value={formData['bot-field']}
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
               {/* Contact Information */}
               <div>
                 <h3 className="text-xl font-semibold text-primary-900 mb-6">Contact Information</h3>
@@ -342,6 +305,8 @@ export const RequestQuote: React.FC = () => {
                     <label key={service} className="flex items-center space-x-3 p-3 border border-neutral-200 rounded-xl hover:bg-neutral-50 cursor-pointer">
                       <input
                         type="checkbox"
+                        name="services"
+                        value={service}
                         checked={formData.services.includes(service)}
                         onChange={() => handleServiceChange(service)}
                         className="w-5 h-5 text-primary-500 rounded focus:ring-primary-500"

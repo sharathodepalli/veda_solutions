@@ -1,8 +1,14 @@
 {
   "jobs": [
     {
+      "id": 1,
+      "title": "Senior Healthcare Technology Consultant",
+      "department": "Consulting",
+      "location": "Remote / Hybrid",
+      "type": "Full-time",
       "experience": "5+ years",
       "salary": "$80,000 - $120,000",
+      "description": "Lead EHR optimization projects for healthcare practices, providing expert consultation and implementation support.",
       "requirements": [
         "Bachelor's degree in Healthcare Administration, IT, or related field",
         "5+ years experience with EHR systems (Epic, Cerner, Allscripts)",
@@ -10,11 +16,6 @@
         "Healthcare industry experience required",
         "Excellent communication and client-facing skills"
       ],
-      "department": "Consulting",
-      "location": "Remote / Hybrid",
-      "title": "Senior Healthcare Technology Consultant",
-      "type": "Full-time",
-      "id": 1,
       "benefits": [
         "Competitive salary and performance bonuses",
         "Health, dental, and vision insurance",
@@ -22,12 +23,17 @@
         "Flexible work arrangements",
         "Professional development opportunities"
       ],
-      "description": "Lead EHR optimization projects for healthcare practices, providing expert consultation and implementation support.",
       "posted": "2024-12-10T00:00:00.000Z"
     },
     {
+      "id": 2,
+      "title": "Virtual Medical Scribe - Certified",
+      "department": "Clinical Support",
+      "location": "Remote",
+      "type": "Full-time / Part-time",
       "experience": "2+ years",
       "salary": "$18 - $25/hour",
+      "description": "Provide real-time documentation support to healthcare providers during patient encounters.",
       "requirements": [
         "Medical scribe certification or equivalent experience",
         "Knowledge of medical terminology and anatomy",
@@ -36,11 +42,6 @@
         "HIPAA training and compliance knowledge",
         "Quiet, professional home office environment"
       ],
-      "department": "Clinical Support",
-      "location": "Remote",
-      "title": "Virtual Medical Scribe - Certified",
-      "type": "Full-time / Part-time",
-      "id": 2,
       "benefits": [
         "Competitive hourly rates",
         "Flexible scheduling options",
@@ -48,22 +49,7 @@
         "Paid training and certification",
         "Career advancement opportunities"
       ],
-      "description": "Provide real-time documentation support to healthcare providers during patient encounters.",
       "posted": "2024-12-08T00:00:00.000Z"
-    },
-    {
-      "experience": "3+ years",
-      "salary": "$18 - $25/hour",
-      "department": "Clinical Support",
-      "location": "Remote",
-      "title": "Virtual Medical Scribe - Certified",
-      "type": "Full-time / Part-time",
-      "id": 3,
-      "benefits": [
-        "Career advancement opportunities"
-      ],
-      "description": "Provide real-time documentation support to healthcare providers during patient encounters.\nMedical scribe certification or equivalent experience\nKnowledge of medical terminology and anatomy\nProficiency with EHR systems\nExcellent typing skills (75+ WPM)\nHIPAA training and compliance knowledge\nQuiet, professional home office environment\nCompetitive hourly rates\nFlexible scheduling options\nHealth insurance for full-time positions\nPaid training and certification\n\n",
-      "posted": "2025-06-21T12:59:24.191Z"
     }
   ]
 }
