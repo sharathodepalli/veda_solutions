@@ -166,7 +166,7 @@ export const RequestQuote: React.FC = () => {
             <form 
               name="quote-request"
               method="POST"
-              action="/thank-you/"
+              action="/thank-you"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               className="space-y-8"
