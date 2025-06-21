@@ -56,9 +56,11 @@ export default {
         '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
         '5xl': ['3rem', { lineHeight: '1' }],
         '6xl': ['3.75rem', { lineHeight: '1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
       },
       spacing: {
         '18': '4.5rem',
+        '22': '5.5rem',
         '88': '22rem',
         '112': '28rem',
         '128': '32rem',
@@ -70,6 +72,12 @@ export default {
       boxShadow: {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
         'soft-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        '3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',
+      },
+      animation: {
+        'ping': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'bounce': 'bounce 3s infinite',
       }
     },
   },

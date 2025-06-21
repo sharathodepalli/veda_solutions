@@ -145,12 +145,37 @@ export const Header: React.FC = () => {
             >
               Client Portal
             </Link>
-            <Link
-              to="/request-quote"
-              className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-2 rounded-xl text-sm font-medium transition-colors duration-200"
-            >
-              Request Consultation
-            </Link>
+            <div className="relative group">
+              <button className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-2 rounded-xl text-sm font-medium transition-colors duration-200">
+                Get Started
+              </button>
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-soft-lg border border-neutral-100 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <Link
+                  to="/consultation"
+                  className="block px-4 py-2 text-sm text-neutral-700 hover:text-primary-500 hover:bg-neutral-50 transition-colors duration-200"
+                >
+                  Book Consultation
+                </Link>
+                <Link
+                  to="/subscription"
+                  className="block px-4 py-2 text-sm text-neutral-700 hover:text-primary-500 hover:bg-neutral-50 transition-colors duration-200"
+                >
+                  View Plans
+                </Link>
+                <Link
+                  to="/service-request"
+                  className="block px-4 py-2 text-sm text-neutral-700 hover:text-primary-500 hover:bg-neutral-50 transition-colors duration-200"
+                >
+                  Request Service
+                </Link>
+                <Link
+                  to="/request-quote"
+                  className="block px-4 py-2 text-sm text-neutral-700 hover:text-primary-500 hover:bg-neutral-50 transition-colors duration-200"
+                >
+                  Get Quote
+                </Link>
+              </div>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -207,13 +232,29 @@ export const Header: React.FC = () => {
               >
                 Client Portal
               </Link>
-              <Link
-                to="/request-quote"
-                className="block mx-3 bg-primary-500 hover:bg-primary-600 text-white px-6 py-2 rounded-xl text-sm font-medium text-center transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Request Consultation
-              </Link>
+              <div className="space-y-2 px-3">
+                <Link
+                  to="/consultation"
+                  className="block bg-primary-500 hover:bg-primary-600 text-white px-6 py-2 rounded-xl text-sm font-medium text-center transition-colors duration-200"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Book Consultation
+                </Link>
+                <Link
+                  to="/subscription"
+                  className="block border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white px-6 py-2 rounded-xl text-sm font-medium text-center transition-all duration-200"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  View Plans
+                </Link>
+                <Link
+                  to="/service-request"
+                  className="block border border-neutral-300 text-neutral-700 hover:bg-neutral-50 px-6 py-2 rounded-xl text-sm font-medium text-center transition-all duration-200"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Request Service
+                </Link>
+              </div>
             </div>
           </div>
         )}

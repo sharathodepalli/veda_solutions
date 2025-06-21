@@ -1,0 +1,36 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[form]
+  # Enable form notifications
+  [form.settings]
+    # Send notifications to this email
+    to = "Contact@thevedhasolutions.com"
+    
+  # Spam filtering
+  [form.spam_filter]
+    enabled = true
+    
+  # Form-specific settings
+  [[form.forms]]
+    name = "consultation"
+    subject = "New Consultation Request - Vedha Solutions"
+    
+  [[form.forms]]
+    name = "subscription"
+    subject = "New Subscription Request - Vedha Solutions"
+    
+  [[form.forms]]
+    name = "service-request"
+    subject = "New Service Request - Vedha Solutions"

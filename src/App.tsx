@@ -13,6 +13,10 @@ import { Testimonials } from './pages/Testimonials';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { ClientPortal } from './pages/ClientPortal';
+import { ThankYou } from './pages/ThankYou';
+import { ConsultationForm } from './pages/ConsultationForm';
+import { SubscriptionForm } from './pages/SubscriptionForm';
+import { ServiceRequestForm } from './pages/ServiceRequestForm';
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/client-portal" element={<ClientPortal />} />
+            <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/consultation" element={<ConsultationForm />} />
+            <Route path="/subscription" element={<SubscriptionForm />} />
+            <Route path="/service-request" element={<ServiceRequestForm />} />
           </Routes>
         </main>
         <Footer />
