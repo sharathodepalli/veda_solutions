@@ -1,0 +1,506 @@
+{
+  "services": [
+    {
+      "id": "ehr-emr-support",
+      "title": "EHR/EMR Support & Optimization",
+      "description": "Comprehensive support for electronic health record systems including setup, optimization, training, and ongoing maintenance.",
+      "heroImage": "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop",
+      "overview": "Our EHR/EMR support services help healthcare practices maximize the efficiency and effectiveness of their electronic health record systems. From initial setup to ongoing optimization, we ensure your EHR works for you, not against you.",
+      "features": [
+        "System Configuration & Setup",
+        "Workflow Optimization",
+        "Staff Training & Education",
+        "24/7 Technical Support",
+        "Data Migration Services",
+        "Template Creation",
+        "Report Generation",
+        "Integration Support"
+      ],
+      "benefits": [
+        "Reduce documentation time by up to 40%",
+        "Improve clinical workflow efficiency",
+        "Ensure regulatory compliance",
+        "Minimize system downtime",
+        "Enhance data accuracy",
+        "Streamline billing processes"
+      ],
+      "process": [
+        {
+          "step": "Assessment",
+          "description": "Comprehensive evaluation of your current EHR setup and workflows"
+        },
+        {
+          "step": "Planning",
+          "description": "Development of customized optimization strategy"
+        },
+        {
+          "step": "Implementation",
+          "description": "Configuration and setup of optimized workflows"
+        },
+        {
+          "step": "Training",
+          "description": "Comprehensive staff training on new processes"
+        },
+        {
+          "step": "Support",
+          "description": "Ongoing technical support and maintenance"
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Basic Support",
+          "price": "$199/month",
+          "popular": false,
+          "features": [
+            "Business hours support",
+            "Basic configuration",
+            "Email support",
+            "Monthly check-ins"
+          ]
+        },
+        {
+          "tier": "Professional",
+          "price": "$399/month",
+          "popular": true,
+          "features": [
+            "24/7 support",
+            "Advanced optimization",
+            "Phone & email support",
+            "Weekly reviews",
+            "Custom templates"
+          ]
+        },
+        {
+          "tier": "Enterprise",
+          "price": "Custom pricing",
+          "popular": false,
+          "features": [
+            "Dedicated support team",
+            "Complete optimization",
+            "Priority support",
+            "Daily monitoring",
+            "Custom integrations"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "number": "40%",
+          "label": "Average reduction in documentation time"
+        },
+        {
+          "number": "50+",
+          "label": "EHR systems supported"
+        },
+        {
+          "number": "99.9%",
+          "label": "System uptime guarantee"
+        },
+        {
+          "number": "24/7",
+          "label": "Technical support availability"
+        }
+      ]
+    },
+    {
+      "id": "virtual-scribes",
+      "title": "Virtual Medical Scribes",
+      "description": "Professional virtual scribes to handle your medical documentation, allowing you to focus entirely on patient care.",
+      "heroImage": "https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop",
+      "overview": "Our certified virtual medical scribes provide real-time documentation support, allowing healthcare providers to focus on patient care while ensuring accurate and comprehensive medical records.",
+      "features": [
+        "Real-time Documentation",
+        "HIPAA Compliant Platform",
+        "Certified Medical Professionals",
+        "Multi-specialty Experience",
+        "Flexible Scheduling",
+        "Quality Assurance",
+        "Secure Communication",
+        "EHR Integration"
+      ],
+      "benefits": [
+        "Save 2-3 hours per day on documentation",
+        "Improve patient interaction and satisfaction",
+        "Reduce physician burnout",
+        "Increase patient capacity",
+        "Ensure accurate documentation",
+        "Improve work-life balance"
+      ],
+      "process": [
+        {
+          "step": "Consultation",
+          "description": "Assess your documentation needs and workflow"
+        },
+        {
+          "step": "Matching",
+          "description": "Pair you with a specialized scribe for your practice"
+        },
+        {
+          "step": "Setup",
+          "description": "Configure secure systems and establish protocols"
+        },
+        {
+          "step": "Training",
+          "description": "Scribe training on your specific requirements"
+        },
+        {
+          "step": "Go Live",
+          "description": "Begin documentation support with ongoing quality monitoring"
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Part-time",
+          "price": "$15/hour",
+          "popular": false,
+          "features": [
+            "Up to 20 hours/week",
+            "Single scribe",
+            "Standard support",
+            "Basic reporting"
+          ]
+        },
+        {
+          "tier": "Full-time",
+          "price": "$12/hour",
+          "popular": true,
+          "features": [
+            "40+ hours/week",
+            "Primary + backup scribe",
+            "Priority support",
+            "Detailed analytics"
+          ]
+        },
+        {
+          "tier": "Multi-provider",
+          "price": "Custom pricing",
+          "popular": false,
+          "features": [
+            "Multiple providers",
+            "Dedicated scribe team",
+            "24/7 coverage",
+            "Advanced reporting"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "number": "2-3 hrs",
+          "label": "Average daily time savings"
+        },
+        {
+          "number": "99.8%",
+          "label": "Documentation accuracy rate"
+        },
+        {
+          "number": "30%",
+          "label": "Average increase in patient capacity"
+        },
+        {
+          "number": "1-2 weeks",
+          "label": "Typical deployment time"
+        }
+      ]
+    },
+    {
+      "id": "revenue-cycle",
+      "title": "Revenue Cycle Management",
+      "description": "End-to-end revenue cycle management services to maximize your practice revenue and minimize claim denials.",
+      "heroImage": "https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop",
+      "overview": "Our comprehensive revenue cycle management services optimize every aspect of your practice's financial operations, from patient scheduling to final payment collection.",
+      "features": [
+        "Claims Processing & Submission",
+        "Denial Management & Appeals",
+        "Payment Posting & Reconciliation",
+        "Patient Collections",
+        "Prior Authorization Support",
+        "Financial Reporting & Analytics",
+        "Insurance Verification",
+        "Accounts Receivable Management"
+      ],
+      "benefits": [
+        "Increase revenue by 15-25%",
+        "Reduce claim denial rates",
+        "Accelerate payment cycles",
+        "Improve cash flow",
+        "Minimize administrative burden",
+        "Ensure compliance with regulations"
+      ],
+      "process": [
+        {
+          "step": "Analysis",
+          "description": "Comprehensive review of current revenue cycle performance"
+        },
+        {
+          "step": "Optimization",
+          "description": "Identify and address inefficiencies and gaps"
+        },
+        {
+          "step": "Implementation",
+          "description": "Deploy improved processes and systems"
+        },
+        {
+          "step": "Monitoring",
+          "description": "Continuous tracking and performance measurement"
+        },
+        {
+          "step": "Reporting",
+          "description": "Regular financial reports and insights"
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Basic",
+          "price": "4% of collections",
+          "popular": false,
+          "features": [
+            "Claims processing",
+            "Denial management",
+            "Basic reporting",
+            "Email support"
+          ]
+        },
+        {
+          "tier": "Professional",
+          "price": "6% of collections",
+          "popular": true,
+          "features": [
+            "Full RCM services",
+            "Advanced analytics",
+            "Dedicated account manager",
+            "Priority support"
+          ]
+        },
+        {
+          "tier": "Enterprise",
+          "price": "Custom pricing",
+          "popular": false,
+          "features": [
+            "Complete outsourcing",
+            "Real-time dashboards",
+            "Dedicated team",
+            "Strategic consulting"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "number": "25%",
+          "label": "Average revenue increase"
+        },
+        {
+          "number": "95%+",
+          "label": "Clean claim rate achieved"
+        },
+        {
+          "number": "60%",
+          "label": "Reduction in denial rates"
+        },
+        {
+          "number": "40%",
+          "label": "Faster payment cycles"
+        }
+      ]
+    },
+    {
+      "id": "medical-coding",
+      "title": "Medical Coding & Auditing",
+      "description": "Expert medical coding services and compliance auditing to ensure accuracy and maximize reimbursements.",
+      "heroImage": "https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop",
+      "overview": "Our certified medical coders and auditors ensure accurate coding, compliance with regulations, and maximum reimbursement for your services.",
+      "features": [
+        "ICD-10 & CPT Coding",
+        "Compliance Auditing",
+        "Documentation Review",
+        "Coding Education & Training",
+        "Appeal Management",
+        "Risk Assessment",
+        "Quality Assurance",
+        "Regulatory Updates"
+      ],
+      "benefits": [
+        "Maximize reimbursement rates",
+        "Ensure coding compliance",
+        "Reduce audit risk",
+        "Improve documentation quality",
+        "Stay current with regulations",
+        "Minimize claim denials"
+      ],
+      "process": [
+        {
+          "step": "Audit",
+          "description": "Comprehensive coding and compliance assessment"
+        },
+        {
+          "step": "Education",
+          "description": "Staff training on proper coding practices"
+        },
+        {
+          "step": "Implementation",
+          "description": "Deploy improved coding workflows"
+        },
+        {
+          "step": "Quality Control",
+          "description": "Ongoing coding review and validation"
+        },
+        {
+          "step": "Reporting",
+          "description": "Regular compliance and performance reports"
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Audit Only",
+          "price": "$2,500",
+          "popular": false,
+          "features": [
+            "Comprehensive coding audit",
+            "Findings report",
+            "Recommendations",
+            "One-time assessment"
+          ]
+        },
+        {
+          "tier": "Ongoing Support",
+          "price": "$799/month",
+          "popular": true,
+          "features": [
+            "Monthly audits",
+            "Staff training",
+            "Coding support",
+            "Compliance updates"
+          ]
+        },
+        {
+          "tier": "Full Service",
+          "price": "Custom pricing",
+          "popular": false,
+          "features": [
+            "Complete coding outsourcing",
+            "Real-time quality control",
+            "Dedicated coding team",
+            "Advanced reporting"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "number": "99%+",
+          "label": "Coding accuracy rate"
+        },
+        {
+          "number": "15%",
+          "label": "Average reimbursement increase"
+        },
+        {
+          "number": "50+",
+          "label": "Medical specialties supported"
+        },
+        {
+          "number": "100%",
+          "label": "Compliance rate maintained"
+        }
+      ]
+    },
+    {
+      "id": "clinical-staffing",
+      "title": "Clinical & Administrative Staffing",
+      "description": "Temporary and permanent staffing solutions for clinical and administrative positions in healthcare practices.",
+      "heroImage": "https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop",
+      "overview": "Our healthcare staffing solutions provide qualified clinical and administrative professionals to meet your practice's temporary and permanent staffing needs.",
+      "features": [
+        "Temporary Staffing Solutions",
+        "Permanent Placement Services",
+        "Credentialing Support",
+        "Background Verification",
+        "Skills Assessment",
+        "Rapid Deployment",
+        "Ongoing Support",
+        "Compliance Management"
+      ],
+      "benefits": [
+        "Access to qualified professionals",
+        "Reduced hiring time and costs",
+        "Flexible staffing solutions",
+        "Comprehensive screening process",
+        "Ongoing support and management",
+        "Risk mitigation"
+      ],
+      "process": [
+        {
+          "step": "Needs Assessment",
+          "description": "Understand your specific staffing requirements"
+        },
+        {
+          "step": "Candidate Sourcing",
+          "description": "Identify and screen qualified candidates"
+        },
+        {
+          "step": "Evaluation",
+          "description": "Comprehensive assessment and interviews"
+        },
+        {
+          "step": "Placement",
+          "description": "Deploy selected candidates to your practice"
+        },
+        {
+          "step": "Support",
+          "description": "Ongoing monitoring and support services"
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Temporary",
+          "price": "$25-45/hour",
+          "popular": false,
+          "features": [
+            "Short-term assignments",
+            "Quick deployment",
+            "Basic screening",
+            "Standard support"
+          ]
+        },
+        {
+          "tier": "Temp-to-Perm",
+          "price": "$30-50/hour + placement fee",
+          "popular": true,
+          "features": [
+            "Extended evaluation period",
+            "Comprehensive screening",
+            "Conversion option",
+            "Full support"
+          ]
+        },
+        {
+          "tier": "Direct Hire",
+          "price": "20-25% of annual salary",
+          "popular": false,
+          "features": [
+            "Permanent placement",
+            "Extensive screening",
+            "Guarantee period",
+            "Ongoing support"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "number": "24-48 hrs",
+          "label": "Average placement time"
+        },
+        {
+          "number": "95%",
+          "label": "Client satisfaction rate"
+        },
+        {
+          "number": "1000+",
+          "label": "Healthcare professionals in network"
+        },
+        {
+          "number": "60%",
+          "label": "Reduction in hiring costs"
+        }
+      ]
+    }
+  ]
+}

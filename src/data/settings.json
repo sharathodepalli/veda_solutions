@@ -1,0 +1,20 @@
+{
+  "siteTitle": "Vedha Solutions - Healthcare Technology & Services",
+  "siteDescription": "Empowering healthcare practices with innovative technology solutions and expert support services for small and mid-sized medical practices.",
+  "contact": {
+    "phone": "(571) 564-7945",
+    "email": "Contact@thevedhasolutions.com",
+    "address": "35325 Drakeshire ln Apt #201\nFarmington hills, MI 48335"
+  },
+  "social": {
+    "facebook": "https://facebook.com",
+    "twitter": "https://twitter.com",
+    "linkedin": "https://linkedin.com",
+    "instagram": "https://instagram.com/"
+  },
+  "hero": {
+    "title": "Healthcare Technology Solutions That Work",
+    "subtitle": "Empowering small and mid-sized medical practices with innovative technology solutions, expert support services, and streamlined operations to focus on what matters most - patient care.",
+    "ctaText": "Request a Consultation"
+  }
+}

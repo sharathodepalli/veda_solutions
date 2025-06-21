@@ -1,0 +1,39 @@
+{
+  "faqs": [
+    {
+      "id": 1,
+      "question": "What types of EHR systems do you support?",
+      "answer": "We support all major EHR systems including Epic, Cerner, Allscripts, eClinicalWorks, NextGen, athenahealth, Practice Fusion, and many others. Our team has experience with over 50 different EHR platforms and can provide optimization services regardless of your current system.",
+      "category": "EHR Support",
+      "tags": ["EHR", "systems", "compatibility"]
+    },
+    {
+      "id": 2,
+      "question": "How quickly can you deploy virtual medical scribes?",
+      "answer": "Most practices can begin virtual scribe services within 1-2 weeks of initial consultation. This includes scribe matching, system setup, training, and workflow integration. We maintain a pool of certified scribes ready for immediate deployment.",
+      "category": "Virtual Scribes",
+      "tags": ["virtual scribes", "deployment", "timeline"]
+    },
+    {
+      "id": 3,
+      "question": "What is your pricing model for revenue cycle management?",
+      "answer": "Our RCM services are typically priced as a percentage of collections (usually 4-8%), ensuring our success is directly tied to improving your revenue. We also offer flat-fee arrangements for larger practices. Pricing depends on practice size, complexity, and specific services required.",
+      "category": "Revenue Cycle",
+      "tags": ["pricing", "RCM", "collections"]
+    },
+    {
+      "id": 4,
+      "question": "Are your virtual scribes HIPAA compliant?",
+      "answer": "Absolutely. All our virtual scribes are thoroughly trained on HIPAA compliance and work within secure, encrypted platforms. We maintain strict data security protocols, signed business associate agreements (BAAs), and regular compliance audits to ensure patient information remains protected.",
+      "category": "Virtual Scribes",
+      "tags": ["HIPAA", "compliance", "security"]
+    },
+    {
+      "id": 5,
+      "question": "Do you provide 24/7 technical support?",
+      "answer": "Yes, we offer 24/7 technical support for all our services. Our support team includes certified EHR specialists, technical experts, and clinical professionals who can assist with any issues that arise. Emergency support is available for critical system issues.",
+      "category": "Support",
+      "tags": ["support", "24/7", "technical"]
+    }
+  ]
+}

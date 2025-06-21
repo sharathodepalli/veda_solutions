@@ -1,0 +1,28 @@
+{
+  "team": [
+    {
+      "name": "Dr. Priya Vedha",
+      "title": "CEO & Founder",
+      "bio": "Former practicing physician with 15+ years of healthcare experience. Passionate about leveraging technology to improve patient care.",
+      "image": "https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+    },
+    {
+      "name": "Michael Chen",
+      "title": "CTO",
+      "bio": "Technology leader with expertise in healthcare IT systems and HIPAA-compliant solutions. Former EHR system architect.",
+      "image": "https://images.pexels.com/photos/6129967/pexels-photo-6129967.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+    },
+    {
+      "name": "Sarah Williams",
+      "title": "Head of Operations",
+      "bio": "Healthcare operations expert focused on streamlining practice workflows and improving efficiency.",
+      "image": "https://images.pexels.com/photos/5452268/pexels-photo-5452268.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+    },
+    {
+      "name": "David Rodriguez",
+      "title": "Director of Revenue Cycle",
+      "bio": "Certified medical coder and billing specialist with deep expertise in healthcare revenue optimization.",
+      "image": "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+    }
+  ]
+}

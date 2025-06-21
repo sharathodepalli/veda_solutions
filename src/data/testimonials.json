@@ -1,0 +1,72 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Dr. Sarah Johnson",
+      "title": "Family Medicine Physician",
+      "company": "Johnson Family Practice",
+      "rating": 5,
+      "quote": "Vedha Solutions transformed our practice efficiency. Their EHR optimization reduced our documentation time by 40%.",
+      "fullTestimonial": "Before working with Vedha Solutions, our practice was drowning in paperwork and inefficient workflows. The EHR system we had was supposed to make things easier, but it felt like it was working against us. The team at Vedha Solutions completely transformed our approach to documentation and patient care. Their EHR optimization reduced our documentation time by 40%, allowing us to see more patients while maintaining the quality of care our patients deserve. The staff training was exceptional, and the ongoing support has been invaluable. I can't imagine running our practice without their expertise.",
+      "image": "https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "service": "EHR/EMR Support & Optimization",
+      "results": [
+        "40% reduction in documentation time",
+        "Increased patient capacity by 25%",
+        "Improved staff satisfaction",
+        "Enhanced compliance scores"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Dr. Michael Chen",
+      "title": "Internal Medicine",
+      "company": "Metro Health Clinic",
+      "rating": 5,
+      "quote": "The virtual scribe service has been a game-changer. I can focus entirely on my patients while knowing documentation is handled professionally.",
+      "fullTestimonial": "The virtual scribe service from Vedha Solutions has revolutionized how I practice medicine. Previously, I was spending 2-3 hours after each clinic day completing notes and documentation. Now, with their virtual scribes handling real-time documentation during patient visits, I can focus entirely on my patients without worrying about missing important details in the medical record. The scribes are incredibly well-trained, understand medical terminology perfectly, and maintain the highest standards of accuracy and professionalism. This service has not only improved my work-life balance but has also enhanced the quality of patient interactions.",
+      "image": "https://images.pexels.com/photos/6129967/pexels-photo-6129967.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "service": "Virtual Medical Scribes",
+      "results": [
+        "2-3 hours saved daily on documentation",
+        "Improved patient interaction quality",
+        "Better work-life balance",
+        "100% documentation accuracy"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Lisa Rodriguez",
+      "title": "Practice Manager",
+      "company": "Riverside Medical Group",
+      "rating": 5,
+      "quote": "Their revenue cycle management service increased our collections by 25% in just six months. The team is knowledgeable and responsive.",
+      "fullTestimonial": "When we partnered with Vedha Solutions for revenue cycle management, our practice was struggling with claim denials, slow collections, and administrative overhead that was eating into our profitability. Within just six months, their RCM service increased our collections by 25% and dramatically reduced our accounts receivable aging. The team's expertise in medical billing, their proactive approach to denial management, and their detailed financial reporting have given us complete visibility into our revenue cycle. They've essentially become an extension of our team, and their responsiveness to our questions and concerns has been outstanding.",
+      "image": "https://images.pexels.com/photos/5452268/pexels-photo-5452268.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "service": "Revenue Cycle Management",
+      "results": [
+        "25% increase in collections",
+        "Reduced claim denial rate by 60%",
+        "Faster payment processing",
+        "Improved cash flow management"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Dr. James Wilson",
+      "title": "Pediatrician",
+      "company": "Wilson Pediatrics",
+      "rating": 5,
+      "quote": "Exceptional support and expertise. Vedha Solutions helped us transition to a new EHR system seamlessly with minimal disruption.",
+      "fullTestimonial": "Transitioning to a new EHR system is every practice's nightmare, but Vedha Solutions made it feel seamless. Their team managed every aspect of our EHR transition - from data migration to staff training to workflow optimization. What impressed me most was their attention to detail and their ability to anticipate potential issues before they became problems. The transition was completed ahead of schedule with minimal disruption to our patient care. Their ongoing support has ensured that we're getting the maximum benefit from our new system. I wouldn't hesitate to recommend them to any practice considering an EHR change.",
+      "image": "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "service": "EHR/EMR Support & Optimization",
+      "results": [
+        "Seamless EHR transition",
+        "Zero data loss during migration",
+        "Staff productivity maintained",
+        "Completed ahead of schedule"
+      ]
+    }
+  ]
+}
