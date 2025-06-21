@@ -1,5 +1,8 @@
 # Netlify CMS admin
 /admin/* /admin/index.html 200
 
+# Thank you page redirect
+/thank-you /thank-you/ 200
+
 # SPA fallback
 /* /index.html 200

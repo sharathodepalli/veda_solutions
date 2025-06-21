@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - Vedha Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#4A90E2',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#123456',
+              900: '#0A2342',
+              950: '#082f49',
+            },
+            accent: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              200: '#fde68a',
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#FFC600',
+              600: '#d97706',
+              700: '#b45309',
+              800: '#92400e',
+              900: '#78350f',
+            },
+            neutral: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+            'soft-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-neutral-50 font-sans">
+  <!-- Header -->
+  <header class="bg-white shadow-soft">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="w-full py-4 flex items-center justify-between">
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-primary-900 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <span class="text-xl font-bold text-primary-900">Vedha Solutions</span>
+          </a>
+        </div>
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="/" class="text-sm font-medium text-neutral-700 hover:text-primary-500 transition-colors duration-200">Home</a>
+          <a href="/services" class="text-sm font-medium text-neutral-700 hover:text-primary-500 transition-colors duration-200">Services</a>
+          <a href="/about" class="text-sm font-medium text-neutral-700 hover:text-primary-500 transition-colors duration-200">About</a>
+          <a href="/contact" class="text-sm font-medium text-neutral-700 hover:text-primary-500 transition-colors duration-200">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="min-h-screen flex items-center justify-center py-20">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-white rounded-3xl p-12 shadow-soft-lg">
+        <!-- Success Icon -->
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
+          <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        
+        <!-- Main Message -->
+        <h1 class="text-3xl font-bold text-primary-900 mb-4">
+          Thank You for Your Submission!
+        </h1>
+        
+        <p class="text-lg text-neutral-600 mb-8 leading-relaxed">
+          We've received your request and will be in touch within 24 hours 
+          to discuss how we can help optimize your practice operations.
+        </p>
+        
+        <!-- What Happens Next -->
+        <div class="bg-neutral-50 rounded-2xl p-6 mb-8">
+          <h3 class="text-lg font-semibold text-primary-900 mb-4">What Happens Next?</h3>
+          <div class="space-y-3 text-left">
+            <div class="flex items-start space-x-3">
+              <div class="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</div>
+              <span class="text-neutral-700">Our team will review your requirements and prepare a customized consultation</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</div>
+              <span class="text-neutral-700">We'll schedule a convenient time to discuss your practice's specific needs</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</div>
+              <span class="text-neutral-700">You'll receive a detailed proposal with pricing and implementation timeline</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="text-center p-4 bg-blue-50 rounded-xl">
+            <svg class="w-8 h-8 text-blue-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            <h4 class="font-semibold text-blue-900 mb-1">Need Immediate Help?</h4>
+            <p class="text-blue-700 text-sm">Call us at (571) 564-7945</p>
+          </div>
+          <div class="text-center p-4 bg-green-50 rounded-xl">
+            <svg class="w-8 h-8 text-green-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <h4 class="font-semibold text-green-900 mb-1">Email Support</h4>
+            <p class="text-green-700 text-sm">Contact@thevedhasolutions.com</p>
+          </div>
+          <div class="text-center p-4 bg-purple-50 rounded-xl">
+            <svg class="w-8 h-8 text-purple-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <h4 class="font-semibold text-purple-900 mb-1">Response Time</h4>
+            <p class="text-purple-700 text-sm">Within 24 hours</p>
+          </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/"
+            class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-xl font-semibold transition-colors duration-200"
+          >
+            Return to Home
+          </a>
+          <a
+            href="/services"
+            class="border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white px-8 py-3 rounded-xl font-semibold transition-all duration-200"
+          >
+            Explore Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="flex items-center justify-center space-x-2 mb-4">
+          <div class="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <span class="text-xl font-bold">Vedha Solutions</span>
+        </div>
+        <p class="text-neutral-300 mb-4">
+          Empowering healthcare practices with innovative technology solutions.
+        </p>
+        <div class="text-neutral-400 text-sm">
+          © 2024 Vedha Solutions. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

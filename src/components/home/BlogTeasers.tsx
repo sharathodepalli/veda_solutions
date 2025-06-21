@@ -102,6 +102,7 @@ export const BlogTeasers: React.FC = () => {
           <form 
             name="newsletter"
             method="POST"
+            action="/thank-you/"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             className="max-w-md mx-auto"

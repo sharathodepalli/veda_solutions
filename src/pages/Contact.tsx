@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import settingsData from '../data/settings.json';
 
 export const Contact: React.FC = () => {
@@ -136,7 +136,7 @@ export const Contact: React.FC = () => {
               <form 
                 name="contact"
                 method="POST"
-                action="/thank-you"
+                action="/thank-you/"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 className="space-y-6"
