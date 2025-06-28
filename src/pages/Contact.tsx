@@ -1,25 +1,29 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
-import settingsData from '../data/settings.json';
+import React, { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import settingsData from "../data/settings.json";
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    subject: '',
-    message: '',
-    contactMethod: 'email',
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    subject: "",
+    message: "",
+    contactMethod: "email",
     // Honeypot field for spam protection
-    'bot-field': ''
+    "bot-field": "",
   });
-  
+
   const { contact } = settingsData;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -27,12 +31,11 @@ export const Contact: React.FC = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-            Get in Touch
-          </h1>
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">Get in Touch</h1>
           <p className="text-xl text-neutral-200 leading-relaxed">
-            Ready to transform your healthcare practice? Our team of experts is here to help. 
-            Contact us today to discuss your specific needs and discover how we can support your success.
+            Ready to transform your healthcare practice? Our team of experts is
+            here to help. Contact us today to discuss your specific needs and
+            discover how we can support your success.
           </p>
         </div>
       </section>
@@ -47,8 +50,9 @@ export const Contact: React.FC = () => {
                 Contact Information
               </h2>
               <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-                We're here to help you optimize your practice operations and improve patient care. 
-                Reach out to us through any of the following methods.
+                We're here to help you optimize your practice operations and
+                improve patient care. Reach out to us through any of the
+                following methods.
               </p>
 
               <div className="space-y-6">
@@ -57,9 +61,15 @@ export const Contact: React.FC = () => {
                     <Phone className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary-900 mb-2">Phone</h3>
-                    <p className="text-neutral-600 mb-1">Main: {contact.phone}</p>
-                    <p className="text-sm text-neutral-500">Monday - Friday: 8:00 AM - 6:00 PM EST</p>
+                    <h3 className="text-lg font-semibold text-primary-900 mb-2">
+                      Phone
+                    </h3>
+                    <p className="text-neutral-600 mb-1">
+                      Main: {contact.phone}
+                    </p>
+                    <p className="text-sm text-neutral-500">
+                      Monday - Friday: 8:00 AM - 6:00 PM EST
+                    </p>
                   </div>
                 </div>
 
@@ -68,9 +78,15 @@ export const Contact: React.FC = () => {
                     <Mail className="w-6 h-6 text-accent-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary-900 mb-2">Email</h3>
-                    <p className="text-neutral-600 mb-1">General: {contact.email}</p>
-                    <p className="text-sm text-neutral-500">We respond within 24 hours</p>
+                    <h3 className="text-lg font-semibold text-primary-900 mb-2">
+                      Email
+                    </h3>
+                    <p className="text-neutral-600 mb-1">
+                      General: {contact.email}
+                    </p>
+                    <p className="text-sm text-neutral-500">
+                      We respond within 24 hours
+                    </p>
                   </div>
                 </div>
 
@@ -79,12 +95,16 @@ export const Contact: React.FC = () => {
                     <MapPin className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary-900 mb-2">Address</h3>
+                    <h3 className="text-lg font-semibold text-primary-900 mb-2">
+                      Address
+                    </h3>
                     <p className="text-neutral-600">
-                      {contact.address.split('\n').map((line, index) => (
+                      {contact.address.split("\n").map((line, index) => (
                         <React.Fragment key={index}>
                           {line}
-                          {index < contact.address.split('\n').length - 1 && <br />}
+                          {index < contact.address.split("\n").length - 1 && (
+                            <br />
+                          )}
                         </React.Fragment>
                       ))}
                     </p>
@@ -96,12 +116,16 @@ export const Contact: React.FC = () => {
                     <Clock className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary-900 mb-2">Business Hours</h3>
+                    <h3 className="text-lg font-semibold text-primary-900 mb-2">
+                      Business Hours
+                    </h3>
                     <div className="text-neutral-600 space-y-1">
                       <p>Monday - Friday: 8:00 AM - 6:00 PM EST</p>
                       <p>Saturday: 9:00 AM - 2:00 PM EST</p>
                       <p>Sunday: Closed</p>
-                      <p className="text-sm text-primary-600 font-medium">24/7 Emergency Support Available</p>
+                      <p className="text-sm text-primary-600 font-medium">
+                        24/7 Emergency Support Available
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -109,10 +133,12 @@ export const Contact: React.FC = () => {
 
               {/* Quick Contact Options */}
               <div className="mt-12 p-6 bg-neutral-50 rounded-2xl">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Need Immediate Assistance?</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Need Immediate Assistance?
+                </h3>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href={`tel:${contact.phone.replace(/[^\d]/g, '')}`}
+                    href={`tel:${contact.phone.replace(/[^\d]/g, "")}`}
                     className="flex-1 bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200 text-center"
                   >
                     Call Now
@@ -132,25 +158,25 @@ export const Contact: React.FC = () => {
               <h2 className="text-3xl font-bold text-primary-900 mb-8">
                 Send Us a Message
               </h2>
-              
-              <form 
+
+              <form
                 name="contact"
                 method="POST"
-                action="/thank-you"
+                action="/thank-you/index.html"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 className="space-y-6"
               >
                 {/* Hidden fields for Netlify */}
                 <input type="hidden" name="form-name" value="contact" />
-                
+
                 {/* Honeypot field for spam protection */}
-                <div style={{ display: 'none' }}>
+                <div style={{ display: "none" }}>
                   <label>
                     Don't fill this out if you're human:
-                    <input 
-                      name="bot-field" 
-                      value={formData['bot-field']}
+                    <input
+                      name="bot-field"
+                      value={formData["bot-field"]}
                       onChange={handleInputChange}
                     />
                   </label>
@@ -226,9 +252,15 @@ export const Contact: React.FC = () => {
                     <option value="">Select a subject</option>
                     <option value="general-inquiry">General Inquiry</option>
                     <option value="ehr-support">EHR/EMR Support</option>
-                    <option value="virtual-scribes">Virtual Medical Scribes</option>
-                    <option value="revenue-cycle">Revenue Cycle Management</option>
-                    <option value="medical-coding">Medical Coding & Auditing</option>
+                    <option value="virtual-scribes">
+                      Virtual Medical Scribes
+                    </option>
+                    <option value="revenue-cycle">
+                      Revenue Cycle Management
+                    </option>
+                    <option value="medical-coding">
+                      Medical Coding & Auditing
+                    </option>
                     <option value="staffing">Clinical Staffing</option>
                     <option value="technical-support">Technical Support</option>
                     <option value="billing-question">Billing Question</option>
@@ -261,7 +293,7 @@ export const Contact: React.FC = () => {
                         type="radio"
                         name="contactMethod"
                         value="email"
-                        checked={formData.contactMethod === 'email'}
+                        checked={formData.contactMethod === "email"}
                         onChange={handleInputChange}
                         className="w-4 h-4 text-primary-500 focus:ring-primary-500"
                       />
@@ -272,7 +304,7 @@ export const Contact: React.FC = () => {
                         type="radio"
                         name="contactMethod"
                         value="phone"
-                        checked={formData.contactMethod === 'phone'}
+                        checked={formData.contactMethod === "phone"}
                         onChange={handleInputChange}
                         className="w-4 h-4 text-primary-500 focus:ring-primary-500"
                       />
@@ -283,7 +315,7 @@ export const Contact: React.FC = () => {
                         type="radio"
                         name="contactMethod"
                         value="both"
-                        checked={formData.contactMethod === 'both'}
+                        checked={formData.contactMethod === "both"}
                         onChange={handleInputChange}
                         className="w-4 h-4 text-primary-500 focus:ring-primary-500"
                       />
@@ -301,7 +333,8 @@ export const Contact: React.FC = () => {
                 </button>
 
                 <p className="text-sm text-neutral-500 text-center">
-                  By submitting this form, you agree to our privacy policy and consent to be contacted by Vedha Solutions.
+                  By submitting this form, you agree to our privacy policy and
+                  consent to be contacted by Vedha Solutions.
                 </p>
               </form>
             </div>
@@ -317,10 +350,11 @@ export const Contact: React.FC = () => {
               Visit Our Office
             </h2>
             <p className="text-lg text-neutral-600">
-              Located in Farmington Hills, Michigan, we're easily accessible for in-person consultations.
+              Located in Farmington Hills, Michigan, we're easily accessible for
+              in-person consultations.
             </p>
           </div>
-          
+
           <div className="bg-white rounded-3xl overflow-hidden shadow-soft-lg">
             <div className="aspect-w-16 aspect-h-9 h-96">
               <iframe
@@ -338,21 +372,28 @@ export const Contact: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="text-center">
                   <MapPin className="w-8 h-8 text-primary-500 mx-auto mb-3" />
-                  <h3 className="font-semibold text-primary-900 mb-2">Address</h3>
+                  <h3 className="font-semibold text-primary-900 mb-2">
+                    Address
+                  </h3>
                   <p className="text-neutral-600 text-sm">
-                    {contact.address.split('\n').map((line, index) => (
+                    {contact.address.split("\n").map((line, index) => (
                       <React.Fragment key={index}>
                         {line}
-                        {index < contact.address.split('\n').length - 1 && <br />}
+                        {index < contact.address.split("\n").length - 1 && (
+                          <br />
+                        )}
                       </React.Fragment>
                     ))}
                   </p>
                 </div>
                 <div className="text-center">
                   <Clock className="w-8 h-8 text-primary-500 mx-auto mb-3" />
-                  <h3 className="font-semibold text-primary-900 mb-2">Office Hours</h3>
+                  <h3 className="font-semibold text-primary-900 mb-2">
+                    Office Hours
+                  </h3>
                   <p className="text-neutral-600 text-sm">
-                    Mon-Fri: 8:00 AM - 6:00 PM<br />
+                    Mon-Fri: 8:00 AM - 6:00 PM
+                    <br />
                     Sat: 9:00 AM - 2:00 PM
                   </p>
                 </div>
@@ -360,7 +401,8 @@ export const Contact: React.FC = () => {
                   <Phone className="w-8 h-8 text-primary-500 mx-auto mb-3" />
                   <h3 className="font-semibold text-primary-900 mb-2">Phone</h3>
                   <p className="text-neutral-600 text-sm">
-                    {contact.phone}<br />
+                    {contact.phone}
+                    <br />
                     24/7 Emergency Support
                   </p>
                 </div>
