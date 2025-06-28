@@ -1,8 +1,8 @@
 // netlify/functions/submit-form.js
 
-// This is a simple handler to process the POST request from your form.
-// It now also forwards the data to a Formspree endpoint to send an email.
-const fetch = require('node-fetch'); // You need to require fetch if it's not a global
+// FIXED: Removed the require() statement.
+// The fetch() function is now a global in modern Node.js versions
+// and can be used directly without a library.
 
 exports.handler = async (event, context) => {
   // Only allow POST requests
@@ -25,8 +25,13 @@ exports.handler = async (event, context) => {
     console.log("Form submission received:", data);
     
     // --- NEW CODE TO FORWARD DATA TO EMAIL SERVICE ---
+    // In this context, fetch is available globally. If not, you can require 'node-fetch'
+    // but the issue you were having is a CommonJS/ESM module issue.
+    // If you need to use node-fetch, use a dynamic import: const { default: fetch } = await import('node-fetch');
+    // But let's try the global fetch first.
+
     // Make sure to replace 'yourFormspreeEndpoint' with your actual Formspree URL.
-    const formspreeResponse = await fetch("https://formspree.io/f/xgvyrdod", {
+    const formspreeResponse = await fetch("https://formspree.io/f/yourFormspreeEndpoint", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
