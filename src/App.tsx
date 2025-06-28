@@ -1,27 +1,29 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
-import { Home } from './pages/Home';
-import { About } from './pages/About';
-import { Services } from './pages/Services';
-import { ServiceDetail } from './pages/ServiceDetail';
-import { Careers } from './pages/Careers';
-import { Blog } from './pages/Blog';
-import { RequestQuote } from './pages/RequestQuote';
-import { Testimonials } from './pages/Testimonials';
-import { FAQ } from './pages/FAQ';
-import { Contact } from './pages/Contact';
-import { ClientPortal } from './pages/ClientPortal';
-import { ThankYou } from './pages/ThankYou';
-import { ConsultationForm } from './pages/ConsultationForm';
-import { SubscriptionForm } from './pages/SubscriptionForm';
-import { ServiceRequestForm } from './pages/ServiceRequestForm';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { Services } from "./pages/Services";
+import { ServiceDetail } from "./pages/ServiceDetail";
+import { Careers } from "./pages/Careers";
+import { Blog } from "./pages/Blog";
+import { RequestQuote } from "./pages/RequestQuote";
+import { Testimonials } from "./pages/Testimonials";
+import { FAQ } from "./pages/FAQ";
+import { Contact } from "./pages/Contact";
+import { ClientPortal } from "./pages/ClientPortal";
+import { ThankYou } from "./pages/ThankYou";
+import { ConsultationForm } from "./pages/ConsultationForm";
+import { SubscriptionForm } from "./pages/SubscriptionForm";
+import { ServiceRequestForm } from "./pages/ServiceRequestForm";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-neutral-50 flex flex-col">
         <Header />
         <main className="flex-grow">
           <Routes>
@@ -40,6 +42,8 @@ function App() {
             <Route path="/consultation" element={<ConsultationForm />} />
             <Route path="/subscription" element={<SubscriptionForm />} />
             <Route path="/service-request" element={<ServiceRequestForm />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
         </main>
         <Footer />

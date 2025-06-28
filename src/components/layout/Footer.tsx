@@ -1,34 +1,43 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Stethoscope, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import settingsData from '../../data/settings.json';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Stethoscope,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+} from "lucide-react";
+import settingsData from "../../data/settings.json";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const { contact, social } = settingsData;
 
   const services = [
-    { name: 'EHR/EMR Support', href: '/services/ehr-emr-support' },
-    { name: 'Virtual Medical Scribes', href: '/services/virtual-scribes' },
-    { name: 'Revenue Cycle Management', href: '/services/revenue-cycle' },
-    { name: 'Medical Coding & Auditing', href: '/services/medical-coding' },
-    { name: 'Clinical Staffing', href: '/services/clinical-staffing' },
+    { name: "EHR/EMR Support", href: "/services/ehr-emr-support" },
+    { name: "Virtual Medical Scribes", href: "/services/virtual-scribes" },
+    { name: "Revenue Cycle Management", href: "/services/revenue-cycle" },
+    { name: "Medical Coding & Auditing", href: "/services/medical-coding" },
+    { name: "Clinical Staffing", href: "/services/clinical-staffing" },
   ];
 
   const company = [
-    { name: 'About Us', href: '/about' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Testimonials', href: '/testimonials' },
-    { name: 'FAQ', href: '/faq' },
+    { name: "About Us", href: "/about" },
+    { name: "Careers", href: "/careers" },
+    { name: "Blog", href: "/blog" },
+    { name: "Testimonials", href: "/testimonials" },
+    { name: "FAQ", href: "/faq" },
   ];
 
   const support = [
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'Client Portal', href: '/client-portal' },
-    { name: 'Request Quote', href: '/request-quote' },
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
+    { name: "Contact Us", href: "/contact" },
+    { name: "Client Portal", href: "/client-portal" },
+    { name: "Request Quote", href: "/request-quote" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Terms of Service", href: "/terms-of-service" },
   ];
 
   return (
@@ -44,10 +53,11 @@ export const Footer: React.FC = () => {
               <span className="text-xl font-bold">Vedha Solutions</span>
             </div>
             <p className="text-neutral-300 mb-6 max-w-md">
-              Empowering healthcare practices with innovative technology solutions and expert support services. 
-              Your trusted partner for EHR optimization, virtual scribes, and revenue cycle management.
+              Empowering healthcare practices with innovative technology
+              solutions and expert support services. Your trusted partner for
+              EHR optimization, virtual scribes, and revenue cycle management.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -61,10 +71,10 @@ export const Footer: React.FC = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary-400 mt-0.5" />
                 <span className="text-neutral-300">
-                  {contact.address.split('\n').map((line, index) => (
+                  {contact.address.split("\n").map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
-                      {index < contact.address.split('\n').length - 1 && <br />}
+                      {index < contact.address.split("\n").length - 1 && <br />}
                     </React.Fragment>
                   ))}
                 </span>

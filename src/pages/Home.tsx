@@ -1,35 +1,45 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Star, Users, Shield, Clock, TrendingUp, Sparkles, Zap } from 'lucide-react';
-import { TestimonialCarousel } from '../components/home/TestimonialCarousel';
-import { BlogTeasers } from '../components/home/BlogTeasers';
-import { ClientLogos } from '../components/home/ClientLogos';
-import servicesData from '../data/services.json';
-import settingsData from '../data/settings.json';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  ArrowRight,
+  CheckCircle,
+  Star,
+  Users,
+  Shield,
+  Clock,
+  TrendingUp,
+  Sparkles,
+  Zap,
+} from "lucide-react";
+import { TestimonialCarousel } from "../components/home/TestimonialCarousel";
+import { BlogTeasers } from "../components/home/BlogTeasers";
+import { ClientLogos } from "../components/home/ClientLogos";
+import servicesData from "../data/services.json";
+import settingsData from "../data/settings.json";
 
 export const Home: React.FC = () => {
-  const services = servicesData.services.slice(0, 4).map(service => ({
+  const services = servicesData.services.slice(0, 4).map((service) => ({
     ...service,
     icon: getServiceIcon(service.id),
-    href: `/services/${service.id}`
+    href: `/services/${service.id}`,
   }));
 
   const stats = [
-    { number: '500+', label: 'Healthcare Practices Served' },
-    { number: '98%', label: 'Client Satisfaction Rate' },
-    { number: '24/7', label: 'Support Availability' },
-    { number: '15+', label: 'Years of Experience' }
+    { number: "500+", label: "Healthcare Practices Served" },
+    { number: "98%", label: "Client Satisfaction Rate" },
+    { number: "24/7", label: "Support Availability" },
+    { number: "15+", label: "Years of Experience" },
   ];
 
   const heroData = settingsData.hero;
 
   function getServiceIcon(serviceId: string) {
     const iconMap: Record<string, any> = {
-      'ehr-emr-support': Shield,
-      'virtual-scribes': Users,
-      'revenue-cycle': TrendingUp,
-      'medical-coding': CheckCircle,
-      'clinical-staffing': Users
+      "ehr-emr-support": Shield,
+      "virtual-scribes": Users,
+      "revenue-cycle": TrendingUp,
+      "medical-coding": CheckCircle,
+      "clinical-staffing": Users,
     };
     return iconMap[serviceId] || Shield;
   }
@@ -39,19 +49,21 @@ export const Home: React.FC = () => {
       {/* Hero Section - Premium Expert Version */}
       <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
-        
+
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-accent-400/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             {/* Left Content - 7 columns */}
             <div className="order-2 lg:order-1 lg:col-span-7">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6 lg:mb-8">
-                Streamline Your <span className="text-accent-400">Workflow</span>. Delight Your Patients.
+                Streamline Your{" "}
+                <span className="text-accent-400">Workflow</span>. Delight Your
+                Patients.
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl text-neutral-200 mb-8 lg:mb-12 leading-relaxed max-w-2xl">
                 {heroData.subtitle}
@@ -72,25 +84,24 @@ export const Home: React.FC = () => {
                 </Link>
               </div>
             </div>
-            
+
             {/* Right Premium Tile - 5 columns */}
             <div className="relative order-1 lg:order-2 lg:col-span-5">
               {/* Main Premium Tile */}
               <div className="relative group">
                 {/* Outer glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary-400/20 via-accent-400/20 to-green-400/20 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 {/* Main tile container */}
                 <div className="relative bg-white/98 backdrop-blur-xl rounded-3xl p-8 lg:p-10 xl:p-12 shadow-2xl border border-white/30 overflow-hidden transform hover:scale-[1.02] transition-all duration-700 hover:shadow-3xl">
-                  
                   {/* Animated gradient background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-50/80 via-white/60 to-accent-50/80 rounded-3xl"></div>
-                  
+
                   {/* Floating geometric elements */}
                   <div className="absolute top-6 right-6 w-3 h-3 bg-accent-400/40 rounded-full animate-ping"></div>
                   <div className="absolute top-12 right-12 w-2 h-2 bg-primary-400/40 rounded-full animate-ping delay-500"></div>
                   <div className="absolute bottom-8 left-8 w-4 h-4 bg-green-400/30 rounded-full animate-pulse"></div>
-                  
+
                   {/* Premium header with sparkle effect */}
                   <div className="relative mb-8 lg:mb-10">
                     <div className="flex items-center justify-center mb-4">
@@ -102,7 +113,7 @@ export const Home: React.FC = () => {
                     </div>
                     <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full mx-auto"></div>
                   </div>
-                  
+
                   <div className="relative space-y-8 lg:space-y-10">
                     {/* Security Pillar - Enhanced */}
                     <div className="group/item cursor-pointer transform hover:scale-105 transition-all duration-300">
@@ -149,7 +160,9 @@ export const Home: React.FC = () => {
                           </div>
                           {/* Floating badge */}
                           <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                            <span className="text-white text-xs font-bold">24</span>
+                            <span className="text-white text-xs font-bold">
+                              24
+                            </span>
                           </div>
                         </div>
                         <div className="flex-1 min-w-0">
@@ -181,7 +194,9 @@ export const Home: React.FC = () => {
                           </div>
                           {/* Floating badge */}
                           <div className="absolute -top-2 -right-2 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center shadow-lg">
-                            <span className="text-white text-xs font-bold">%</span>
+                            <span className="text-white text-xs font-bold">
+                              %
+                            </span>
                           </div>
                         </div>
                         <div className="flex-1 min-w-0">
@@ -218,7 +233,7 @@ export const Home: React.FC = () => {
 
                   {/* Bottom premium accent */}
                   <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-primary-500 via-accent-500 to-green-500 rounded-b-3xl opacity-80"></div>
-                  
+
                   {/* Animated corner elements */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-accent-400/10 to-transparent rounded-3xl"></div>
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary-400/10 to-transparent rounded-3xl"></div>
@@ -229,7 +244,7 @@ export const Home: React.FC = () => {
               <div className="hidden lg:block absolute -top-12 -right-12 w-8 h-8 bg-accent-400/20 rounded-full animate-bounce delay-500 blur-sm"></div>
               <div className="hidden lg:block absolute -bottom-16 -left-16 w-12 h-12 bg-primary-400/20 rounded-full animate-bounce delay-1500 blur-sm"></div>
               <div className="hidden xl:block absolute top-1/2 -right-20 w-6 h-6 bg-green-400/30 rounded-full animate-pulse delay-1000"></div>
-              
+
               {/* Enhanced outer glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-400/10 via-accent-400/10 to-green-400/10 rounded-3xl blur-3xl -z-10 transform scale-150 opacity-60"></div>
             </div>
@@ -246,9 +261,7 @@ export const Home: React.FC = () => {
                 <div className="text-3xl lg:text-4xl font-bold text-primary-900 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-neutral-600 font-medium">
-                  {stat.label}
-                </div>
+                <div className="text-neutral-600 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -263,11 +276,12 @@ export const Home: React.FC = () => {
               Comprehensive Healthcare Solutions
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              From EHR optimization to virtual scribes, we provide the technology and support 
-              your practice needs to operate efficiently and deliver exceptional patient care.
+              From EHR optimization to virtual scribes, we provide the
+              technology and support your practice needs to operate efficiently
+              and deliver exceptional patient care.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => {
               const IconComponent = service.icon;
@@ -327,8 +341,8 @@ export const Home: React.FC = () => {
             Ready to Transform Your Practice?
           </h2>
           <p className="text-xl text-neutral-200 mb-8 leading-relaxed">
-            Join hundreds of healthcare practices that trust Vedha Solutions for their technology needs. 
-            Get started with a free consultation today.
+            Join hundreds of healthcare practices that trust Vedha Solutions for
+            their technology needs. Get started with a free consultation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
