@@ -1,57 +1,59 @@
 # netlify.toml
 
 [build]
-  publish = "dist"
-  command = "npm run build"
+  publish = "dist"
+  command = "npm run build"
 
 # Serve Netlify CMS admin routes
 [[redirects]]
-  from = "/admin/*"
-  to   = "/admin/index.html"
-  status = 200
+  from = "/admin/*"
+  to   = "/admin/index.html"
+  status = 200
 
 # Serve the static Thank You page for both GET and POST requests
 [[redirects]]
-  from = "/thank-you"
-  to   = "/thank-you/index.html"
-  status = 200
+  from = "/thank-you"
+  to   = "/thank-you/index.html"
+  status = 200
 
-# Fallback to SPA for all other routes
+# Fallback to SPA for all other routes, but ONLY for GET requests.
+# This is the key change to fix the POST 404 error.
 [[redirects]]
-  from = "/*"
-  to   = "/index.html"
-  status = 200
+  from = "/*"
+  to   = "/index.html"
+  status = 200
+  method = "GET" # THIS IS THE CRUCIAL ADDITION
 
 [form]
-  # Enable email notifications for form submissions
-  [form.settings]
-    to = "Contact@thevedhasolutions.com"
+  # Enable email notifications for form submissions
+  [form.settings]
+    to = "Contact@thevedhasolutions.com"
 
-  # Enable built-in spam filtering
-  [form.spam_filter]
-    enabled = true
+  # Enable built-in spam filtering
+  [form.spam_filter]
+    enabled = true
 
-  # Individual form subjects
-  [[form.forms]]
-    name = "consultation"
-    subject = "New Consultation Request - Vedha Solutions"
+  # Individual form subjects
+  [[form.forms]]
+    name = "consultation"
+    subject = "New Consultation Request - Vedha Solutions"
 
-  [[form.forms]]
-    name = "subscription"
-    subject = "New Subscription Request - Vedha Solutions"
+  [[form.forms]]
+    name = "subscription"
+    subject = "New Subscription Request - Vedha Solutions"
 
-  [[form.forms]]
-    name = "service-request"
-    subject = "New Service Request - Vedha Solutions"
+  [[form.forms]]
+    name = "service-request"
+    subject = "New Service Request - Vedha Solutions"
 
-  [[form.forms]]
-    name = "contact"
-    subject = "New Contact Form Submission - Vedha Solutions"
+  [[form.forms]]
+    name = "contact"
+    subject = "New Contact Form Submission - Vedha Solutions"
 
-  [[form.forms]]
-    name = "quote-request"
-    subject = "New Quote Request - Vedha Solutions"
+  [[form.forms]]
+    name = "quote-request"
+    subject = "New Quote Request - Vedha Solutions"
 
-  [[form.forms]]
-    name = "newsletter"
-    subject = "New Newsletter Subscription - Vedha Solutions"
+  [[form.forms]]
+    name = "newsletter"
+    subject = "New Newsletter Subscription - Vedha Solutions"
