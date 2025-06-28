@@ -4,6 +4,7 @@
 # Thank you page redirects - Handle both URLs
 /thank-you /thank-you/index.html 200
 /thank-you/ /thank-you/index.html 200
+/thank-you/* /thank-you/index.html 200
 
 # SPA fallback
 /* /index.html 200
