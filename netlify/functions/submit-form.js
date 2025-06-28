@@ -31,7 +31,7 @@ exports.handler = async (event, context) => {
     // But let's try the global fetch first.
 
     // Make sure to replace 'yourFormspreeEndpoint' with your actual Formspree URL.
-    const formspreeResponse = await fetch("https://formspree.io/f/yourFormspreeEndpoint", {
+    const formspreeResponse = await fetch("https://formspree.io/f/xgvyrdod", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
