@@ -1,48 +1,57 @@
+# netlify.toml
+
 [build]
   publish = "dist"
   command = "npm run build"
 
+# Serve Netlify CMS admin routes
 [[redirects]]
   from = "/admin/*"
-  to = "/admin/index.html"
+  to   = "/admin/index.html"
   status = 200
 
+# Serve the static Thank You page for both GET and POST
+[[redirects]]
+  from = "/thank-you/*"
+  to   = "/thank-you/index.html"
+  status = 200
+
+# Fallback to SPA for all other routes
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to   = "/index.html"
   status = 200
 
 [form]
-  # Enable form notifications
+  # Enable email notifications for form submissions
   [form.settings]
-    # Send notifications to this email
     to = "Contact@thevedhasolutions.com"
-    
-  # Spam filtering
+
+  # Enable built-in spam filtering
   [form.spam_filter]
     enabled = true
-    
-  # Form-specific settings
+
+  # Individual form subjects
   [[form.forms]]
     name = "consultation"
     subject = "New Consultation Request - Vedha Solutions"
-    
+
   [[form.forms]]
     name = "subscription"
     subject = "New Subscription Request - Vedha Solutions"
-    
+
   [[form.forms]]
     name = "service-request"
     subject = "New Service Request - Vedha Solutions"
-    
+
   [[form.forms]]
     name = "contact"
     subject = "New Contact Form Submission - Vedha Solutions"
-    
+
   [[form.forms]]
     name = "quote-request"
     subject = "New Quote Request - Vedha Solutions"
-    
+
   [[form.forms]]
     name = "newsletter"
     subject = "New Newsletter Subscription - Vedha Solutions"
