@@ -38,7 +38,7 @@ export const Contact: React.FC = () => {
     e.preventDefault(); // Prevent the default browser form submission
 
     // Manually submit the form data to Netlify, targeting the form's page URL.
-    fetch("/contact", {
+    fetch("/.netlify/functions/submit-form", {
       // CHANGED: Target the correct page path
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

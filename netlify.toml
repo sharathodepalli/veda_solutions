@@ -55,3 +55,6 @@
   [[form.forms]]
     name = "newsletter"
     subject = "New Newsletter Subscription - Vedha Solutions"
+
+  [functions]
+  directory = "netlify/functions"
