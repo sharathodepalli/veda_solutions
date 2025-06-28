@@ -1,120 +1,83 @@
-<!-- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vedha Solutions - Healthcare technology and services for small and mid-sized medical practices. EHR support, virtual scribes, revenue cycle management, and more." />
-    <title>Vedha Solutions - Healthcare Technology & Services</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
-  </body>
-</html> -->
-
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vedha Solutions - Healthcare technology and services for small and mid-sized medical practices. EHR support, virtual scribes, revenue cycle management, and more." />
-    <title>Vedha Solutions - Healthcare Technology & Services</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vedha Solutions - Healthcare technology and services for small and mid-sized medical practices. EHR support, virtual scribes, revenue cycle management, and more." />
+  <title>Vedha Solutions - Healthcare Technology & Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <!-- Your React root mount point -->
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 
-    <!-- Netlify form stubs: build-time detection -->
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      hidden
-    >
-      <input type="hidden" name="form-name" value="contact" />
-      <input name="name" />
-      <input name="email" />
-      <input name="phone" />
-      <input name="company" />
-      <input name="subject" />
-      <textarea name="message"></textarea>
-      <input name="contactMethod" />
-      <input name="bot-field" />
-    </form>
+  <!-- Netlify Forms stubs for build-time detection -->
+  <form
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="name" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="company" />
+    <input name="subject" />
+    <textarea name="message"></textarea>
+    <input name="contactMethod" />
+    <input name="bot-field" />
+  </form>
 
-    <form
-      name="subscription"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      hidden
-    >
-      <input type="hidden" name="form-name" value="subscription" />
-      <input name="firstName" />
-      <input name="lastName" />
-      <input name="email" />
-      <input name="phone" />
-      <input name="selectedPlan" />
-      <input name="addOnServices" />
-      <input name="bot-field" />
-    </form>
+  <form
+    name="subscription"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="subscription" />
+    <input name="firstName" />
+    <input name="lastName" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="selectedPlan" />
+    <input name="addOnServices" />
+    <input name="bot-field" />
+  </form>
 
-    <form
-      name="service-request"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      hidden
-    >
-      <input type="hidden" name="form-name" value="service-request" />
-      <input name="name" />
-      <input name="email" />
-      <input name="serviceType" />
-      <textarea name="details"></textarea>
-      <input name="bot-field" />
-    </form>
+  <form
+    name="service-request"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="service-request" />
+    <input name="name" />
+    <input name="email" />
+    <input name="serviceType" />
+    <textarea name="details"></textarea>
+    <input name="bot-field" />
+  </form>
+  <!-- Add additional stubs here for other forms (consultation, newsletter, etc.) -->
 
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <textarea name="message"></textarea>
-    </form>
-
-    <!-- Add additional stubs here for any other forms (e.g., consultation, newsletter, etc.) -->
-
-  </body>
+</body>
 </html>
