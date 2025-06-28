@@ -4,73 +4,54 @@
   publish = "dist"
   command = "npm run build"
 
-# --------------------------------------------------------------
-# Redirects and Rewrites
-# --------------------------------------------------------------
-
 # Serve Netlify CMS admin routes
-# Rewrites /admin/* to /admin/index.html to enable client-side routing for the CMS.
 [[redirects]]
   from = "/admin/*"
   to   = "/admin/index.html"
   status = 200
 
-# Serve the static Thank You page after form submissions.
-# This is a rewrite, so the URL in the browser bar stays the same.
-# The `*` wildcard handles /thank-you, /thank-you/, and any other paths under it.
+# Serve the static Thank You page for both GET and POST requests
 [[redirects]]
-  from = "/thank-you/*"
+  from = "/thank-you"
   to   = "/thank-you/index.html"
   status = 200
 
-# Fallback for client-side routing (SPA).
-# This rule ensures all other routes serve the main index.html file.
+# Fallback to SPA for all other routes
 [[redirects]]
   from = "/*"
   to   = "/index.html"
   status = 200
 
-# --------------------------------------------------------------
-# Netlify Forms Configuration
-# --------------------------------------------------------------
-
 [form]
-  # Enable email notifications for all form submissions by default.
+  # Enable email notifications for form submissions
   [form.settings]
     to = "Contact@thevedhasolutions.com"
 
-  # Enable built-in spam filtering for all forms.
+  # Enable built-in spam filtering
   [form.spam_filter]
     enabled = true
 
-  # Individual form subjects and success pages (optional but recommended for clarity).
-  # The `success` field can replace the `action` attribute in the HTML form.
+  # Individual form subjects
   [[form.forms]]
     name = "consultation"
     subject = "New Consultation Request - Vedha Solutions"
-    # success = "/thank-you/"  # Optional: Uncomment if you want to control redirect from here.
 
   [[form.forms]]
     name = "subscription"
     subject = "New Subscription Request - Vedha Solutions"
-    # success = "/thank-you/"
 
   [[form.forms]]
     name = "service-request"
     subject = "New Service Request - Vedha Solutions"
-    # success = "/thank-you/"
 
   [[form.forms]]
     name = "contact"
     subject = "New Contact Form Submission - Vedha Solutions"
-    # success = "/thank-you/"
 
   [[form.forms]]
     name = "quote-request"
     subject = "New Quote Request - Vedha Solutions"
-    # success = "/thank-you/"
 
   [[form.forms]]
     name = "newsletter"
     subject = "New Newsletter Subscription - Vedha Solutions"
-    # success = "/thank-you/"

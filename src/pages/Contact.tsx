@@ -162,14 +162,18 @@ export const Contact: React.FC = () => {
               <form
                 name="contact"
                 method="POST"
-                action="/thank-you/"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 className="space-y-6"
               >
                 {/* Hidden fields for Netlify */}
                 <input type="hidden" name="form-name" value="contact" />
-
+                <input
+                  type="hidden"
+                  name="_redirect"
+                  value="/thank-you/"
+                />{" "}
+                {/* ADD THIS LINE */}
                 {/* Honeypot field for spam protection */}
                 <div style={{ display: "none" }}>
                   <label>
@@ -181,7 +185,6 @@ export const Contact: React.FC = () => {
                     />
                   </label>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-neutral-700 mb-2">
@@ -210,7 +213,6 @@ export const Contact: React.FC = () => {
                     />
                   </div>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-neutral-700 mb-2">
@@ -237,7 +239,6 @@ export const Contact: React.FC = () => {
                     />
                   </div>
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 mb-2">
                     Subject *
@@ -267,7 +268,6 @@ export const Contact: React.FC = () => {
                     <option value="partnership">Partnership Opportunity</option>
                   </select>
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 mb-2">
                     Message *
@@ -282,7 +282,6 @@ export const Contact: React.FC = () => {
                     className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 mb-2">
                     Preferred Contact Method
@@ -323,7 +322,6 @@ export const Contact: React.FC = () => {
                     </label>
                   </div>
                 </div>
-
                 <button
                   type="submit"
                   className="w-full bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-200 flex items-center justify-center"
@@ -331,7 +329,6 @@ export const Contact: React.FC = () => {
                   Send Message
                   <Send className="ml-2 w-5 h-5" />
                 </button>
-
                 <p className="text-sm text-neutral-500 text-center">
                   By submitting this form, you agree to our privacy policy and
                   consent to be contacted by Vedha Solutions.

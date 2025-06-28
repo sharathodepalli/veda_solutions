@@ -26,24 +26,16 @@
     }
   </script>
 
-  <form
+ <form
   name="contact"
   method="POST"
-  action="/thank-you/"
   data-netlify="true"
   data-netlify-honeypot="bot-field"
   hidden
 >
   <input type="hidden" name="form-name" value="contact" />
-  <input name="name" />
-  <input name="email" />
-  <input name="phone" />
-  <input name="company" />
-  <input name="subject" />
-  <textarea name="message"></textarea>
-  <input name="contactMethod" />
-  <input name="bot-field" />
-</form>
+  <input type="hidden" name="_redirect" value="/thank-you/" />
+  </form>
 
   <form
     name="subscription"
