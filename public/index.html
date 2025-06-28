@@ -26,26 +26,34 @@
     }
   </script>
 
- <form
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  data-netlify-honeypot="bot-field"
-  hidden
->
-  <input type="hidden" name="form-name" value="contact" />
-  <input type="hidden" name="_redirect" value="/thank-you/" />
+  <form
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" name="_redirect" value="/thank-you/" />
+    <input name="name" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="company" />
+    <input name="subject" />
+    <textarea name="message"></textarea>
+    <input name="contactMethod" />
+    <input name="bot-field" />
   </form>
 
   <form
     name="subscription"
     method="POST"
-    action="/thank-you/"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     hidden
   >
     <input type="hidden" name="form-name" value="subscription" />
+    <input type="hidden" name="_redirect" value="/thank-you/" />
     <input name="firstName" />
     <input name="lastName" />
     <input name="email" />
@@ -69,28 +77,28 @@
   <form
     name="service-request"
     method="POST"
-    action="/thank-you/"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     hidden
   >
     <input type="hidden" name="form-name" value="service-request" />
+    <input type="hidden" name="_redirect" value="/thank-you/" />
     <input name="name" />
     <input name="email" />
     <input name="serviceType" />
     <textarea name="details"></textarea>
     <input name="bot-field" />
   </form>
-
+  
   <form
     name="consultation"
     method="POST"
-    action="/thank-you/"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     hidden
   >
     <input type="hidden" name="form-name" value="consultation" />
+    <input type="hidden" name="_redirect" value="/thank-you/" />
     <input name="name" />
     <input name="email" />
     <input name="phone" />
@@ -103,12 +111,12 @@
   <form
     name="quote-request"
     method="POST"
-    action="/thank-you/"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     hidden
   >
     <input type="hidden" name="form-name" value="quote-request" />
+    <input type="hidden" name="_redirect" value="/thank-you/" />
     <input name="name" />
     <input name="email" />
     <input name="phone" />
@@ -120,12 +128,12 @@
   <form
     name="newsletter"
     method="POST"
-    action="/thank-you/"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     hidden
   >
     <input type="hidden" name="form-name" value="newsletter" />
+    <input type="hidden" name="_redirect" value="/thank-you/" />
     <input name="email" />
     <input name="bot-field" />
   </form>
