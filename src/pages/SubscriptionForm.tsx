@@ -1,107 +1,170 @@
-import React, { useState } from 'react';
-import { CheckCircle, ArrowRight, Shield, Clock, Users, Star } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  CheckCircle,
+  ArrowRight,
+  Shield,
+  Clock,
+  Users,
+  Star,
+} from "lucide-react";
+
+// ADD THIS: A utility function to encode form data for submission
+const encode = (data: Record<string, string | string[] | boolean>) => {
+  return Object.keys(data)
+    .map((key) => {
+      const value = data[key];
+      // Handle arrays of values (like the 'addOnServices' checkbox group)
+      if (Array.isArray(value)) {
+        return value
+          .map(
+            (item) => encodeURIComponent(key) + "[]=" + encodeURIComponent(item)
+          )
+          .join("&");
+      }
+      return (
+        encodeURIComponent(key) + "=" + encodeURIComponent(value as string)
+      );
+    })
+    .join("&");
+};
 
 const subscriptionPlans = [
   {
-    id: 'basic',
-    name: 'Basic Support',
-    price: '$299',
-    period: 'per month',
-    description: 'Essential support for small practices',
+    id: "basic",
+    name: "Basic Support",
+    price: "$299",
+    period: "per month",
+    description: "Essential support for small practices",
     features: [
-      'Business hours support (8AM-6PM)',
-      'Basic EHR configuration',
-      'Email and phone support',
-      'Monthly system check-ins',
-      'Basic reporting',
-      'Up to 5 users'
+      "Business hours support (8AM-6PM)",
+      "Basic EHR configuration",
+      "Email and phone support",
+      "Monthly system check-ins",
+      "Basic reporting",
+      "Up to 5 users",
     ],
-    popular: false
+    popular: false,
   },
   {
-    id: 'professional',
-    name: 'Professional',
-    price: '$599',
-    period: 'per month',
-    description: 'Comprehensive support for growing practices',
+    id: "professional",
+    name: "Professional",
+    price: "$599",
+    period: "per month",
+    description: "Comprehensive support for growing practices",
     features: [
-      '24/7 priority support',
-      'Advanced workflow optimization',
-      'Custom template creation',
-      'Weekly performance reviews',
-      'Advanced analytics & reporting',
-      'Staff training included',
-      'Up to 15 users'
+      "24/7 priority support",
+      "Advanced workflow optimization",
+      "Custom template creation",
+      "Weekly performance reviews",
+      "Advanced analytics & reporting",
+      "Staff training included",
+      "Up to 15 users",
     ],
-    popular: true
+    popular: true,
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
-    price: 'Custom',
-    period: 'pricing',
-    description: 'Full-service solution for large practices',
+    id: "enterprise",
+    name: "Enterprise",
+    price: "Custom",
+    period: "pricing",
+    description: "Full-service solution for large practices",
     features: [
-      'Dedicated support team',
-      'Complete system optimization',
-      'Priority emergency support',
-      'Daily system monitoring',
-      'Custom integrations',
-      'Unlimited users',
-      'On-site training available'
+      "Dedicated support team",
+      "Complete system optimization",
+      "Priority emergency support",
+      "Daily system monitoring",
+      "Custom integrations",
+      "Unlimited users",
+      "On-site training available",
     ],
-    popular: false
-  }
+    popular: false,
+  },
 ];
 
 const addOnServices = [
-  { id: 'virtual-scribes', name: 'Virtual Medical Scribes', price: '$15-18/hour' },
-  { id: 'revenue-cycle', name: 'Revenue Cycle Management', price: '4-6% of collections' },
-  { id: 'medical-coding', name: 'Medical Coding & Auditing', price: '$1,299/month' },
-  { id: 'clinical-staffing', name: 'Clinical Staffing', price: '$28-55/hour' }
+  {
+    id: "virtual-scribes",
+    name: "Virtual Medical Scribes",
+    price: "$15-18/hour",
+  },
+  {
+    id: "revenue-cycle",
+    name: "Revenue Cycle Management",
+    price: "4-6% of collections",
+  },
+  {
+    id: "medical-coding",
+    name: "Medical Coding & Auditing",
+    price: "$1,299/month",
+  },
+  { id: "clinical-staffing", name: "Clinical Staffing", price: "$28-55/hour" },
 ];
 
 export const SubscriptionForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    title: '',
-    practiceName: '',
-    practiceType: '',
-    practiceSize: '',
-    selectedPlan: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    title: "",
+    practiceName: "",
+    practiceType: "",
+    practiceSize: "",
+    selectedPlan: "",
     addOnServices: [] as string[],
-    currentEHR: '',
-    currentChallenges: '',
-    startDate: '',
-    billingContact: '',
-    billingEmail: '',
-    specialRequests: '',
+    currentEHR: "",
+    currentChallenges: "",
+    startDate: "",
+    billingContact: "",
+    billingEmail: "",
+    specialRequests: "",
     agreedToTerms: false,
     // Honeypot field for spam protection
-    'bot-field': ''
+    "bot-field": "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value, type } = e.target;
-    if (type === 'checkbox') {
+    if (type === "checkbox") {
       const checked = (e.target as HTMLInputElement).checked;
-      if (name === 'agreedToTerms') {
-        setFormData(prev => ({ ...prev, [name]: checked }));
+      if (name === "agreedToTerms") {
+        setFormData((prev) => ({ ...prev, [name]: checked }));
       } else {
         // Handle add-on services
-        setFormData(prev => ({
+        setFormData((prev) => ({
           ...prev,
           addOnServices: checked
             ? [...prev.addOnServices, value]
-            : prev.addOnServices.filter(service => service !== value)
+            : prev.addOnServices.filter((service) => service !== value),
         }));
       }
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
+  };
+
+  // ADD THIS: The manual submission handler using fetch
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default browser form submission
+
+    // Manually submit the form data to your universal Netlify Function
+    fetch("/.netlify/functions/submit-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "subscription", // This form's name is 'subscription'
+        ...formData,
+      }),
+    })
+      .then(() => {
+        // Redirect on successful submission
+        window.location.href = "/thank-you/";
+      })
+      .catch((error) => alert(`Form submission failed: ${error}`));
   };
 
   return (
@@ -113,8 +176,9 @@ export const SubscriptionForm: React.FC = () => {
             Choose Your Healthcare Technology Plan
           </h1>
           <p className="text-xl text-neutral-200 leading-relaxed mb-8">
-            Select the perfect plan for your practice and start optimizing your operations today. 
-            All plans include our comprehensive support and proven results.
+            Select the perfect plan for your practice and start optimizing your
+            operations today. All plans include our comprehensive support and
+            proven results.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center text-left">
             <div className="flex items-center space-x-3">
@@ -141,13 +205,19 @@ export const SubscriptionForm: React.FC = () => {
               Flexible Plans for Every Practice
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              Choose the plan that fits your practice size and needs. All plans include our core features with varying levels of support.
+              Choose the plan that fits your practice size and needs. All plans
+              include our core features with varying levels of support.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {subscriptionPlans.map((plan) => (
-              <div key={plan.id} className={`bg-white rounded-2xl p-8 shadow-soft ${plan.popular ? 'ring-2 ring-primary-500 relative' : ''}`}>
+              <div
+                key={plan.id}
+                className={`bg-white rounded-2xl p-8 shadow-soft ${
+                  plan.popular ? "ring-2 ring-primary-500 relative" : ""
+                }`}
+              >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-primary-500 text-white px-4 py-1 rounded-full text-sm font-medium">
@@ -156,14 +226,21 @@ export const SubscriptionForm: React.FC = () => {
                   </div>
                 )}
                 <div className="text-center mb-8">
-                  <h3 className="text-xl font-bold text-primary-900 mb-2">{plan.name}</h3>
-                  <div className="text-3xl font-bold text-primary-600 mb-1">{plan.price}</div>
+                  <h3 className="text-xl font-bold text-primary-900 mb-2">
+                    {plan.name}
+                  </h3>
+                  <div className="text-3xl font-bold text-primary-600 mb-1">
+                    {plan.price}
+                  </div>
                   <div className="text-neutral-500">{plan.period}</div>
                   <p className="text-neutral-600 mt-2">{plan.description}</p>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-neutral-700">
+                    <li
+                      key={idx}
+                      className="flex items-center text-neutral-700"
+                    >
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                       {feature}
                     </li>
@@ -188,24 +265,26 @@ export const SubscriptionForm: React.FC = () => {
               </p>
             </div>
 
-            <form 
+            <form
               name="subscription"
               method="POST"
-              action="/thank-you"
+              // REMOVE THIS: action="/thank-you"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               className="space-y-8"
+              // ADD THIS: The onSubmit handler to trigger the fetch call
+              onSubmit={handleSubmit}
             >
               {/* Hidden fields for Netlify */}
               <input type="hidden" name="form-name" value="subscription" />
-              
+
               {/* Honeypot field for spam protection */}
-              <div style={{ display: 'none' }}>
+              <div style={{ display: "none" }}>
                 <label>
                   Don't fill this out if you're human:
-                  <input 
-                    name="bot-field" 
-                    value={formData['bot-field']}
+                  <input
+                    name="bot-field"
+                    value={formData["bot-field"]}
                     onChange={handleInputChange}
                   />
                 </label>
@@ -213,7 +292,9 @@ export const SubscriptionForm: React.FC = () => {
 
               {/* Plan Selection */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Select Your Plan</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Select Your Plan
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {subscriptionPlans.map((plan) => (
                     <label key={plan.id} className="cursor-pointer">
@@ -225,15 +306,23 @@ export const SubscriptionForm: React.FC = () => {
                         onChange={handleInputChange}
                         className="sr-only"
                       />
-                      <div className={`p-4 border-2 rounded-xl transition-all duration-200 ${
-                        formData.selectedPlan === plan.id
-                          ? 'border-primary-500 bg-primary-50'
-                          : 'border-neutral-200 hover:border-neutral-300'
-                      }`}>
+                      <div
+                        className={`p-4 border-2 rounded-xl transition-all duration-200 ${
+                          formData.selectedPlan === plan.id
+                            ? "border-primary-500 bg-primary-50"
+                            : "border-neutral-200 hover:border-neutral-300"
+                        }`}
+                      >
                         <div className="text-center">
-                          <h4 className="font-semibold text-primary-900">{plan.name}</h4>
-                          <div className="text-lg font-bold text-primary-600">{plan.price}</div>
-                          <div className="text-sm text-neutral-500">{plan.period}</div>
+                          <h4 className="font-semibold text-primary-900">
+                            {plan.name}
+                          </h4>
+                          <div className="text-lg font-bold text-primary-600">
+                            {plan.price}
+                          </div>
+                          <div className="text-sm text-neutral-500">
+                            {plan.period}
+                          </div>
                         </div>
                       </div>
                     </label>
@@ -243,10 +332,15 @@ export const SubscriptionForm: React.FC = () => {
 
               {/* Add-on Services */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Add-on Services (Optional)</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Add-on Services (Optional)
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {addOnServices.map((service) => (
-                    <label key={service.id} className="flex items-center space-x-3 p-4 border border-neutral-200 rounded-xl hover:bg-neutral-50 cursor-pointer">
+                    <label
+                      key={service.id}
+                      className="flex items-center space-x-3 p-4 border border-neutral-200 rounded-xl hover:bg-neutral-50 cursor-pointer"
+                    >
                       <input
                         type="checkbox"
                         name="addOnServices"
@@ -256,8 +350,12 @@ export const SubscriptionForm: React.FC = () => {
                         className="w-5 h-5 text-primary-500 rounded focus:ring-primary-500"
                       />
                       <div className="flex-1">
-                        <div className="font-medium text-neutral-900">{service.name}</div>
-                        <div className="text-sm text-neutral-600">{service.price}</div>
+                        <div className="font-medium text-neutral-900">
+                          {service.name}
+                        </div>
+                        <div className="text-sm text-neutral-600">
+                          {service.price}
+                        </div>
                       </div>
                     </label>
                   ))}
@@ -266,10 +364,14 @@ export const SubscriptionForm: React.FC = () => {
 
               {/* Contact Information */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Contact Information</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Contact Information
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">First Name *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      First Name *
+                    </label>
                     <input
                       type="text"
                       name="firstName"
@@ -280,7 +382,9 @@ export const SubscriptionForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Last Name *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Last Name *
+                    </label>
                     <input
                       type="text"
                       name="lastName"
@@ -291,7 +395,9 @@ export const SubscriptionForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Email Address *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Email Address *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -302,7 +408,9 @@ export const SubscriptionForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Phone Number *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Phone Number *
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -313,7 +421,9 @@ export const SubscriptionForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Job Title</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Job Title
+                    </label>
                     <input
                       type="text"
                       name="title"
@@ -323,7 +433,9 @@ export const SubscriptionForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Practice Name *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Practice Name *
+                    </label>
                     <input
                       type="text"
                       name="practiceName"
@@ -338,10 +450,14 @@ export const SubscriptionForm: React.FC = () => {
 
               {/* Practice Details */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Practice Details</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Practice Details
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Practice Type</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Practice Type
+                    </label>
                     <select
                       name="practiceType"
                       value={formData.practiceType}
@@ -350,7 +466,9 @@ export const SubscriptionForm: React.FC = () => {
                     >
                       <option value="">Select practice type</option>
                       <option value="family-medicine">Family Medicine</option>
-                      <option value="internal-medicine">Internal Medicine</option>
+                      <option value="internal-medicine">
+                        Internal Medicine
+                      </option>
                       <option value="pediatrics">Pediatrics</option>
                       <option value="cardiology">Cardiology</option>
                       <option value="orthopedics">Orthopedics</option>
@@ -358,7 +476,9 @@ export const SubscriptionForm: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Practice Size</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Practice Size
+                    </label>
                     <select
                       name="practiceSize"
                       value={formData.practiceSize}
@@ -374,7 +494,9 @@ export const SubscriptionForm: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Current EHR System</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Current EHR System
+                    </label>
                     <input
                       type="text"
                       name="currentEHR"
@@ -385,13 +507,15 @@ export const SubscriptionForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Preferred Start Date</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Preferred Start Date
+                    </label>
                     <input
                       type="date"
                       name="startDate"
                       value={formData.startDate}
                       onChange={handleInputChange}
-                      min={new Date().toISOString().split('T')[0]}
+                      min={new Date().toISOString().split("T")[0]}
                       className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
                   </div>
@@ -400,10 +524,14 @@ export const SubscriptionForm: React.FC = () => {
 
               {/* Billing Information */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Billing Information</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Billing Information
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Billing Contact Name</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Billing Contact Name
+                    </label>
                     <input
                       type="text"
                       name="billingContact"
@@ -413,7 +541,9 @@ export const SubscriptionForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Billing Email</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Billing Email
+                    </label>
                     <input
                       type="email"
                       name="billingEmail"
@@ -427,10 +557,14 @@ export const SubscriptionForm: React.FC = () => {
 
               {/* Additional Information */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Additional Information</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Additional Information
+                </h3>
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Current Challenges</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Current Challenges
+                    </label>
                     <textarea
                       name="currentChallenges"
                       rows={3}
@@ -441,7 +575,9 @@ export const SubscriptionForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Special Requests</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Special Requests
+                    </label>
                     <textarea
                       name="specialRequests"
                       rows={3}
@@ -466,7 +602,23 @@ export const SubscriptionForm: React.FC = () => {
                     className="w-5 h-5 text-primary-500 rounded focus:ring-primary-500 mt-0.5"
                   />
                   <div className="text-sm text-neutral-700">
-                    I agree to the <a href="/terms" className="text-primary-500 hover:text-primary-600">Terms of Service</a> and <a href="/privacy" className="text-primary-500 hover:text-primary-600">Privacy Policy</a>. I understand that this subscription will auto-renew monthly and can be cancelled at any time with 30 days notice.
+                    I agree to the{" "}
+                    <a
+                      href="/terms"
+                      className="text-primary-500 hover:text-primary-600"
+                    >
+                      Terms of Service
+                    </a>{" "}
+                    and{" "}
+                    <a
+                      href="/privacy"
+                      className="text-primary-500 hover:text-primary-600"
+                    >
+                      Privacy Policy
+                    </a>
+                    . I understand that this subscription will auto-renew
+                    monthly and can be cancelled at any time with 30 days
+                    notice.
                   </div>
                 </label>
               </div>
@@ -476,13 +628,14 @@ export const SubscriptionForm: React.FC = () => {
                 <button
                   type="submit"
                   disabled={!formData.agreedToTerms || !formData.selectedPlan}
-                  className="bg-primary-500 hover:bg-primary-600 disabled:bg-neutral-300 disabled:cursor-not-allowed text-white px-12 py-4 rounded-2xl font-semibold text-lg transition-colors duration-200 inline-flex items-center"
+                  className="bg-primary-500 hover:bg-primary-600 text-white px-12 py-4 rounded-2xl font-semibold text-lg transition-colors duration-200 inline-flex items-center"
                 >
                   Start Subscription
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </button>
                 <p className="text-sm text-neutral-500 mt-4">
-                  You'll receive a confirmation email with next steps and billing information.
+                  You'll receive a confirmation email with next steps and
+                  billing information.
                 </p>
               </div>
             </form>
@@ -496,23 +649,39 @@ export const SubscriptionForm: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
               <Shield className="w-12 h-12 text-primary-500 mx-auto mb-3" />
-              <h3 className="font-semibold text-primary-900 mb-2">HIPAA Compliant</h3>
-              <p className="text-neutral-600 text-sm">Fully secure and compliant</p>
+              <h3 className="font-semibold text-primary-900 mb-2">
+                HIPAA Compliant
+              </h3>
+              <p className="text-neutral-600 text-sm">
+                Fully secure and compliant
+              </p>
             </div>
             <div>
               <Clock className="w-12 h-12 text-green-500 mx-auto mb-3" />
-              <h3 className="font-semibold text-primary-900 mb-2">24/7 Support</h3>
-              <p className="text-neutral-600 text-sm">Always here when you need us</p>
+              <h3 className="font-semibold text-primary-900 mb-2">
+                24/7 Support
+              </h3>
+              <p className="text-neutral-600 text-sm">
+                Always here when you need us
+              </p>
             </div>
             <div>
               <Users className="w-12 h-12 text-blue-500 mx-auto mb-3" />
-              <h3 className="font-semibold text-primary-900 mb-2">500+ Practices</h3>
-              <p className="text-neutral-600 text-sm">Trusted by healthcare providers</p>
+              <h3 className="font-semibold text-primary-900 mb-2">
+                500+ Practices
+              </h3>
+              <p className="text-neutral-600 text-sm">
+                Trusted by healthcare providers
+              </p>
             </div>
             <div>
               <Star className="w-12 h-12 text-accent-500 mx-auto mb-3" />
-              <h3 className="font-semibold text-primary-900 mb-2">98% Satisfaction</h3>
-              <p className="text-neutral-600 text-sm">Proven client satisfaction</p>
+              <h3 className="font-semibold text-primary-900 mb-2">
+                98% Satisfaction
+              </h3>
+              <p className="text-neutral-600 text-sm">
+                Proven client satisfaction
+              </p>
             </div>
           </div>
         </div>

@@ -1,74 +1,113 @@
-import React, { useState } from 'react';
-import { Calendar, Clock, CheckCircle, ArrowRight, Phone, Mail, Users } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Calendar,
+  Clock,
+  CheckCircle,
+  ArrowRight,
+  Phone,
+  Mail,
+  Users,
+} from "lucide-react";
+
+// ADD THIS: A utility function to encode form data for submission
+const encode = (data: Record<string, string>) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
 
 const consultationTypes = [
-  'EHR/EMR Optimization',
-  'Virtual Medical Scribes',
-  'Revenue Cycle Management',
-  'Medical Coding & Auditing',
-  'Clinical Staffing',
-  'General Consultation',
-  'Multiple Services'
+  "EHR/EMR Optimization",
+  "Virtual Medical Scribes",
+  "Revenue Cycle Management",
+  "Medical Coding & Auditing",
+  "Clinical Staffing",
+  "General Consultation",
+  "Multiple Services",
 ];
 
 const practiceTypes = [
-  'Family Medicine',
-  'Internal Medicine',
-  'Pediatrics',
-  'Cardiology',
-  'Orthopedics',
-  'Dermatology',
-  'Psychiatry',
-  'Surgery',
-  'Urgent Care',
-  'Multi-Specialty',
-  'Other'
+  "Family Medicine",
+  "Internal Medicine",
+  "Pediatrics",
+  "Cardiology",
+  "Orthopedics",
+  "Dermatology",
+  "Psychiatry",
+  "Surgery",
+  "Urgent Care",
+  "Multi-Specialty",
+  "Other",
 ];
 
 const practiceSizes = [
-  '1-2 Providers',
-  '3-5 Providers',
-  '6-10 Providers',
-  '11-20 Providers',
-  '20+ Providers'
+  "1-2 Providers",
+  "3-5 Providers",
+  "6-10 Providers",
+  "11-20 Providers",
+  "20+ Providers",
 ];
 
 const timeSlots = [
-  '9:00 AM - 10:00 AM',
-  '10:00 AM - 11:00 AM',
-  '11:00 AM - 12:00 PM',
-  '1:00 PM - 2:00 PM',
-  '2:00 PM - 3:00 PM',
-  '3:00 PM - 4:00 PM',
-  '4:00 PM - 5:00 PM'
+  "9:00 AM - 10:00 AM",
+  "10:00 AM - 11:00 AM",
+  "11:00 AM - 12:00 PM",
+  "1:00 PM - 2:00 PM",
+  "2:00 PM - 3:00 PM",
+  "3:00 PM - 4:00 PM",
+  "4:00 PM - 5:00 PM",
 ];
 
 export const ConsultationForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    title: '',
-    practiceName: '',
-    practiceType: '',
-    practiceSize: '',
-    consultationType: '',
-    preferredDate: '',
-    preferredTime: '',
-    currentChallenges: '',
-    goals: '',
-    timeline: '',
-    additionalInfo: '',
-    contactMethod: 'email',
-    hearAboutUs: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    title: "",
+    practiceName: "",
+    practiceType: "",
+    practiceSize: "",
+    consultationType: "",
+    preferredDate: "",
+    preferredTime: "",
+    currentChallenges: "",
+    goals: "",
+    timeline: "",
+    additionalInfo: "",
+    contactMethod: "email",
+    hearAboutUs: "",
     // Honeypot field for spam protection
-    'bot-field': ''
+    "bot-field": "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // ADD THIS: The manual submission handler using fetch
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default browser form submission
+
+    // Manually submit the form data to your Netlify Function
+    fetch("/.netlify/functions/submit-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "consultation", // This is crucial for routing in your function
+        ...formData,
+      }),
+    })
+      .then(() => {
+        // Redirect on successful submission
+        window.location.href = "/thank-you/";
+      })
+      .catch((error) => alert(`Form submission failed: ${error}`));
   };
 
   return (
@@ -80,8 +119,9 @@ export const ConsultationForm: React.FC = () => {
             Schedule Your Free Consultation
           </h1>
           <p className="text-xl text-neutral-200 leading-relaxed mb-8">
-            Get personalized recommendations for your practice with a 30-minute consultation 
-            from our healthcare technology experts. No obligation, just valuable insights.
+            Get personalized recommendations for your practice with a 30-minute
+            consultation from our healthcare technology experts. No obligation,
+            just valuable insights.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center text-left">
             <div className="flex items-center space-x-3">
@@ -107,15 +147,21 @@ export const ConsultationForm: React.FC = () => {
             <h2 className="text-2xl font-bold text-primary-900 mb-4">
               Prefer to Talk Right Now?
             </h2>
-            <p className="text-neutral-600">Our healthcare technology experts are ready to help</p>
+            <p className="text-neutral-600">
+              Our healthcare technology experts are ready to help
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Phone className="w-8 h-8 text-primary-600" />
               </div>
-              <h3 className="text-lg font-semibold text-primary-900 mb-2">Call Us Now</h3>
-              <p className="text-neutral-600 mb-4">Speak with a consultant immediately</p>
+              <h3 className="text-lg font-semibold text-primary-900 mb-2">
+                Call Us Now
+              </h3>
+              <p className="text-neutral-600 mb-4">
+                Speak with a consultant immediately
+              </p>
               <a
                 href="tel:+15715647945"
                 className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200 inline-block"
@@ -127,8 +173,12 @@ export const ConsultationForm: React.FC = () => {
               <div className="w-16 h-16 bg-accent-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-8 h-8 text-accent-600" />
               </div>
-              <h3 className="text-lg font-semibold text-primary-900 mb-2">Email Us</h3>
-              <p className="text-neutral-600 mb-4">Get detailed information via email</p>
+              <h3 className="text-lg font-semibold text-primary-900 mb-2">
+                Email Us
+              </h3>
+              <p className="text-neutral-600 mb-4">
+                Get detailed information via email
+              </p>
               <a
                 href="mailto:Contact@thevedhasolutions.com"
                 className="bg-accent-500 hover:bg-accent-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200 inline-block"
@@ -140,8 +190,12 @@ export const ConsultationForm: React.FC = () => {
               <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Calendar className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-lg font-semibold text-primary-900 mb-2">Schedule Below</h3>
-              <p className="text-neutral-600 mb-4">Book a convenient time to talk</p>
+              <h3 className="text-lg font-semibold text-primary-900 mb-2">
+                Schedule Below
+              </h3>
+              <p className="text-neutral-600 mb-4">
+                Book a convenient time to talk
+              </p>
               <a
                 href="#consultation-form"
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200 inline-block"
@@ -162,28 +216,31 @@ export const ConsultationForm: React.FC = () => {
                 Book Your Consultation
               </h2>
               <p className="text-lg text-neutral-600">
-                Tell us about your practice and we'll schedule a time that works for you.
+                Tell us about your practice and we'll schedule a time that works
+                for you.
               </p>
             </div>
 
-            <form 
+            <form
               name="consultation"
               method="POST"
-              action="/thank-you"
+              // REMOVE THIS: action="/thank-you"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               className="space-y-8"
+              // ADD THIS: The onSubmit handler to trigger the fetch call
+              onSubmit={handleSubmit}
             >
               {/* Hidden fields for Netlify */}
               <input type="hidden" name="form-name" value="consultation" />
-              
+
               {/* Honeypot field for spam protection */}
-              <div style={{ display: 'none' }}>
+              <div style={{ display: "none" }}>
                 <label>
                   Don't fill this out if you're human:
-                  <input 
-                    name="bot-field" 
-                    value={formData['bot-field']}
+                  <input
+                    name="bot-field"
+                    value={formData["bot-field"]}
                     onChange={handleInputChange}
                   />
                 </label>
@@ -191,10 +248,14 @@ export const ConsultationForm: React.FC = () => {
 
               {/* Contact Information */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Contact Information</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Contact Information
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">First Name *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      First Name *
+                    </label>
                     <input
                       type="text"
                       name="firstName"
@@ -205,7 +266,9 @@ export const ConsultationForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Last Name *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Last Name *
+                    </label>
                     <input
                       type="text"
                       name="lastName"
@@ -216,7 +279,9 @@ export const ConsultationForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Email Address *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Email Address *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -227,7 +292,9 @@ export const ConsultationForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Phone Number *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Phone Number *
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -238,7 +305,9 @@ export const ConsultationForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Job Title</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Job Title
+                    </label>
                     <input
                       type="text"
                       name="title"
@@ -253,10 +322,14 @@ export const ConsultationForm: React.FC = () => {
 
               {/* Practice Information */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Practice Information</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Practice Information
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Practice Name *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Practice Name *
+                    </label>
                     <input
                       type="text"
                       name="practiceName"
@@ -267,7 +340,9 @@ export const ConsultationForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Practice Type *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Practice Type *
+                    </label>
                     <select
                       name="practiceType"
                       required
@@ -276,13 +351,17 @@ export const ConsultationForm: React.FC = () => {
                       className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="">Select practice type</option>
-                      {practiceTypes.map(type => (
-                        <option key={type} value={type}>{type}</option>
+                      {practiceTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Practice Size *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Practice Size *
+                    </label>
                     <select
                       name="practiceSize"
                       required
@@ -291,8 +370,10 @@ export const ConsultationForm: React.FC = () => {
                       className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="">Select practice size</option>
-                      {practiceSizes.map(size => (
-                        <option key={size} value={size}>{size}</option>
+                      {practiceSizes.map((size) => (
+                        <option key={size} value={size}>
+                          {size}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -301,10 +382,14 @@ export const ConsultationForm: React.FC = () => {
 
               {/* Consultation Details */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Consultation Details</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Consultation Details
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Consultation Type *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Consultation Type *
+                    </label>
                     <select
                       name="consultationType"
                       required
@@ -313,13 +398,17 @@ export const ConsultationForm: React.FC = () => {
                       className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="">Select consultation type</option>
-                      {consultationTypes.map(type => (
-                        <option key={type} value={type}>{type}</option>
+                      {consultationTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Implementation Timeline</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Implementation Timeline
+                    </label>
                     <select
                       name="timeline"
                       value={formData.timeline}
@@ -327,7 +416,9 @@ export const ConsultationForm: React.FC = () => {
                       className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="">Select timeline</option>
-                      <option value="immediate">Immediate (within 30 days)</option>
+                      <option value="immediate">
+                        Immediate (within 30 days)
+                      </option>
                       <option value="1-3-months">1-3 months</option>
                       <option value="3-6-months">3-6 months</option>
                       <option value="6-12-months">6-12 months</option>
@@ -335,18 +426,22 @@ export const ConsultationForm: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Preferred Date</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Preferred Date
+                    </label>
                     <input
                       type="date"
                       name="preferredDate"
                       value={formData.preferredDate}
                       onChange={handleInputChange}
-                      min={new Date().toISOString().split('T')[0]}
+                      min={new Date().toISOString().split("T")[0]}
                       className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Preferred Time</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Preferred Time
+                    </label>
                     <select
                       name="preferredTime"
                       value={formData.preferredTime}
@@ -354,8 +449,10 @@ export const ConsultationForm: React.FC = () => {
                       className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="">Select time slot</option>
-                      {timeSlots.map(slot => (
-                        <option key={slot} value={slot}>{slot}</option>
+                      {timeSlots.map((slot) => (
+                        <option key={slot} value={slot}>
+                          {slot}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -364,10 +461,14 @@ export const ConsultationForm: React.FC = () => {
 
               {/* Additional Information */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Tell Us More</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Tell Us More
+                </h3>
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Current Challenges</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Current Challenges
+                    </label>
                     <textarea
                       name="currentChallenges"
                       rows={4}
@@ -378,7 +479,9 @@ export const ConsultationForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Goals & Objectives</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Goals & Objectives
+                    </label>
                     <textarea
                       name="goals"
                       rows={3}
@@ -389,7 +492,9 @@ export const ConsultationForm: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Additional Information</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Additional Information
+                    </label>
                     <textarea
                       name="additionalInfo"
                       rows={3}
@@ -404,17 +509,21 @@ export const ConsultationForm: React.FC = () => {
 
               {/* Contact Preferences */}
               <div>
-                <h3 className="text-xl font-semibold text-primary-900 mb-6">Contact Preferences</h3>
+                <h3 className="text-xl font-semibold text-primary-900 mb-6">
+                  Contact Preferences
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">Preferred Contact Method</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      Preferred Contact Method
+                    </label>
                     <div className="space-y-2">
                       <label className="flex items-center space-x-3">
                         <input
                           type="radio"
                           name="contactMethod"
                           value="email"
-                          checked={formData.contactMethod === 'email'}
+                          checked={formData.contactMethod === "email"}
                           onChange={handleInputChange}
                           className="w-4 h-4 text-primary-500 focus:ring-primary-500"
                         />
@@ -425,7 +534,7 @@ export const ConsultationForm: React.FC = () => {
                           type="radio"
                           name="contactMethod"
                           value="phone"
-                          checked={formData.contactMethod === 'phone'}
+                          checked={formData.contactMethod === "phone"}
                           onChange={handleInputChange}
                           className="w-4 h-4 text-primary-500 focus:ring-primary-500"
                         />
@@ -436,16 +545,20 @@ export const ConsultationForm: React.FC = () => {
                           type="radio"
                           name="contactMethod"
                           value="both"
-                          checked={formData.contactMethod === 'both'}
+                          checked={formData.contactMethod === "both"}
                           onChange={handleInputChange}
                           className="w-4 h-4 text-primary-500 focus:ring-primary-500"
                         />
-                        <span className="text-neutral-700">Both Email and Phone</span>
+                        <span className="text-neutral-700">
+                          Both Email and Phone
+                        </span>
                       </label>
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">How did you hear about us?</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      How did you hear about us?
+                    </label>
                     <select
                       name="hearAboutUs"
                       value={formData.hearAboutUs}
@@ -474,7 +587,8 @@ export const ConsultationForm: React.FC = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </button>
                 <p className="text-sm text-neutral-500 mt-4">
-                  By submitting this form, you agree to our privacy policy and consent to be contacted by Vedha Solutions.
+                  By submitting this form, you agree to our privacy policy and
+                  consent to be contacted by Vedha Solutions.
                 </p>
               </div>
             </form>
