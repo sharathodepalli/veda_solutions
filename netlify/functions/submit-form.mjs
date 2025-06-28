@@ -1,14 +1,23 @@
-// netlify/functions/submit-form.js
+// netlify/functions/submit-form.mjs
 
-// FIXED: Using a wrapper function for dynamic import to avoid top-level await issue.
-// This ensures compatibility with CommonJS bundling in Netlify Functions.
+// FIXED: This file is now explicitly an ES Module (.mjs extension).
+// It uses export async function handler instead of exports.handler.
+// This fully supports top-level await and modern import syntax.
 
-// This is a wrapper function to enable dynamic import of node-fetch in a CJS context.
-// It allows us to use 'fetch' directly within the handler.
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+// No need for a dynamic import wrapper for fetch as it's now a global in ESM context.
+// Node-fetch is also an ESM by default now, so direct import works.
+// We are importing default as fetch since node-fetch exports a default.
+import fetch from 'node-fetch'; // Standard ES Module import
 
-
-exports.handler = async (event, context) => {
+/**
+ * Universal Netlify Serverless Function to handle form submissions from multiple forms.
+ * It parses the form data, dynamically sets the email subject,
+ * forwards the data to Formspree for email notifications, and
+ * includes specific logic for the newsletter form to interact with a mailing list API.
+ *
+ * This function handles POST requests from forms submitted via client-side JavaScript (fetch).
+ */
+export async function handler(event, context) { // Changed to ESM export syntax
   // Ensure the function only processes POST requests for security and correctness.
   if (event.httpMethod !== "POST") {
     console.warn(`Method Not Allowed: Received a ${event.httpMethod} request.`);
@@ -23,10 +32,11 @@ exports.handler = async (event, context) => {
     const formData = new URLSearchParams(event.body);
     const data = {};
     for (const [key, value] of formData.entries()) {
+      // Basic sanitization/trimming can be added here if needed for specific fields.
       data[key] = value;
     }
 
-    // Extract the form name from the submitted data. This is crucial for differentiation.
+    // Extract the form name from the submitted data.
     const formName = data['form-name'] || 'unknown-form';
     console.log(`Received submission from form: '${formName}'`, data);
 
@@ -68,7 +78,7 @@ exports.handler = async (event, context) => {
               },
               body: JSON.stringify({
                 email_address: newsletterEmail,
-                status: 'subscribed', // or 'pending' for double opt-in
+                status: 'subscribed',
               }),
             });
 
@@ -95,7 +105,7 @@ exports.handler = async (event, context) => {
       _subject: emailSubject,
     };
 
-    // Replace 'yourFormspreeEndpoint' with the actual Formspree URL from your Formspree dashboard.
+    // Replace 'yourFormspreeEndpoint' with the actual Formspree URL.
     const formspreeEndpoint = "https://formspree.io/f/xgvyrdod"; // <<< REPLACE THIS URL
 
     const formspreeResponse = await fetch(formspreeEndpoint, {
@@ -129,4 +139,4 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ message: "Internal Server Error during form processing." }),
     };
   }
-};
+}
