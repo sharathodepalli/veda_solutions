@@ -2,7 +2,7 @@
 
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "npm run build"
 
 # Serve Netlify CMS admin routes
 [[redirects]]
