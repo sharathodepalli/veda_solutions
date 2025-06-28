@@ -1,7 +1,9 @@
 // netlify/functions/submit-form.js
 
 // This is a simple handler to process the POST request from your form.
-// It will log the data to your Netlify function logs.
+// It now also forwards the data to a Formspree endpoint to send an email.
+const fetch = require('node-fetch'); // You need to require fetch if it's not a global
+
 exports.handler = async (event, context) => {
   // Only allow POST requests
   if (event.httpMethod !== "POST") {
@@ -13,7 +15,6 @@ exports.handler = async (event, context) => {
 
   try {
     // Netlify automatically parses the body of URL-encoded form submissions.
-    // The form data is available in event.body.
     const formData = new URLSearchParams(event.body);
     const data = {};
     for (const [key, value] of formData.entries()) {
@@ -21,17 +22,28 @@ exports.handler = async (event, context) => {
     }
 
     // You can now access all your form fields in the 'data' object.
-    // For example: data.name, data.email, data.message, etc.
-
-    // Log the data to your function logs for debugging.
     console.log("Form submission received:", data);
     
-    // You can add logic here to send an email or save data to a database.
-    // Netlify's built-in email notifications for forms are typically used instead.
+    // --- NEW CODE TO FORWARD DATA TO EMAIL SERVICE ---
+    // Make sure to replace 'yourFormspreeEndpoint' with your actual Formspree URL.
+    const formspreeResponse = await fetch("https://formspree.io/f/xgvyrdod", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data), // We're sending the parsed data as JSON
+    });
 
-    // Return a successful response. This tells your fetch() call that the submission worked.
+    if (formspreeResponse.ok) {
+        console.log("Email sent successfully!");
+    } else {
+        console.error("Formspree submission failed:", formspreeResponse.statusText);
+    }
+    // --- END NEW CODE ---
+
+    // Return a successful response.
     return {
-      statusCode: 204, // 204 No Content is standard for a successful POST that doesn't return data.
+      statusCode: 204, // 204 No Content is standard for a successful POST.
       body: "",
     };
 
