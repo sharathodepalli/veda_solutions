@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import settingsData from "../data/settings.json";
 
+// CORRECTED: Added a type annotation for the 'data' parameter.
+const encode = (data: Record<string, string>) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -24,6 +31,26 @@ export const Contact: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // This is the new submission handler using fetch
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default browser form submission
+
+    // Manually submit the form data to Netlify
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "contact", // The form name from your hidden stub
+        ...formData,
+      }),
+    })
+      .then(() => {
+        // Redirect on successful submission
+        window.location.href = "/thank-you/";
+      })
+      .catch((error) => alert(`Form submission failed: ${error}`));
   };
 
   return (
@@ -165,15 +192,11 @@ export const Contact: React.FC = () => {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 className="space-y-6"
+                onSubmit={handleSubmit}
               >
                 {/* Hidden fields for Netlify */}
                 <input type="hidden" name="form-name" value="contact" />
-                <input
-                  type="hidden"
-                  name="_redirect"
-                  value="/thank-you/"
-                />{" "}
-                {/* ADD THIS LINE */}
+                <input type="hidden" name="_redirect" value="/thank-you/" />
                 {/* Honeypot field for spam protection */}
                 <div style={{ display: "none" }}>
                   <label>
