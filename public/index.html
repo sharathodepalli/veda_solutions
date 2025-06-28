@@ -12,7 +12,6 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <!-- Your React root mount point -->
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
   <script>
@@ -27,28 +26,29 @@
     }
   </script>
 
-  <!-- Netlify Forms stubs for build-time detection -->
   <form
-    name="contact"
-    method="POST"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
-    hidden
-  >
-    <input type="hidden" name="form-name" value="contact" />
-    <input name="name" />
-    <input name="email" />
-    <input name="phone" />
-    <input name="company" />
-    <input name="subject" />
-    <textarea name="message"></textarea>
-    <input name="contactMethod" />
-    <input name="bot-field" />
-  </form>
+  name="contact"
+  method="POST"
+  action="/thank-you/"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  hidden
+>
+  <input type="hidden" name="form-name" value="contact" />
+  <input name="name" />
+  <input name="email" />
+  <input name="phone" />
+  <input name="company" />
+  <input name="subject" />
+  <textarea name="message"></textarea>
+  <input name="contactMethod" />
+  <input name="bot-field" />
+</form>
 
   <form
     name="subscription"
     method="POST"
+    action="/thank-you/"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     hidden
@@ -60,12 +60,24 @@
     <input name="phone" />
     <input name="selectedPlan" />
     <input name="addOnServices" />
+    <input name="title" />
+    <input name="practiceName" />
+    <input name="practiceType" />
+    <input name="practiceSize" />
+    <input name="currentEHR" />
+    <textarea name="currentChallenges"></textarea>
+    <input name="startDate" />
+    <input name="billingContact" />
+    <input name="billingEmail" />
+    <textarea name="specialRequests"></textarea>
+    <input name="agreedToTerms" />
     <input name="bot-field" />
   </form>
 
   <form
     name="service-request"
     method="POST"
+    action="/thank-you/"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     hidden
@@ -77,7 +89,54 @@
     <textarea name="details"></textarea>
     <input name="bot-field" />
   </form>
-  <!-- Add additional stubs here for other forms (consultation, newsletter, etc.) -->
+
+  <form
+    name="consultation"
+    method="POST"
+    action="/thank-you/"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="consultation" />
+    <input name="name" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="company" />
+    <input name="service" />
+    <textarea name="message"></textarea>
+    <input name="bot-field" />
+  </form>
+
+  <form
+    name="quote-request"
+    method="POST"
+    action="/thank-you/"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="quote-request" />
+    <input name="name" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="service" />
+    <input name="details" />
+    <input name="bot-field" />
+  </form>
+
+  <form
+    name="newsletter"
+    method="POST"
+    action="/thank-you/"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="newsletter" />
+    <input name="email" />
+    <input name="bot-field" />
+  </form>
 
 </body>
 </html>
