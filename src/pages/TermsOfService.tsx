@@ -197,10 +197,10 @@ const Terms: React.FC = () => {
           If you have any questions about these Terms of Service, please contact
           us at{" "}
           <a
-            href="mailto:legal@vedhasolutions.com"
+            href="mailto:Contact@thevedhasolutions.com"
             className="text-primary-500 hover:text-primary-600 underline"
           >
-            legal@vedhasolutions.com
+            Contact@thevedhasolutions.com
           </a>
           .
         </p>

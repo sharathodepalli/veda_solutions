@@ -343,25 +343,18 @@ export const Privacy: React.FC = () => {
           Privacy Policy periodically for any changes.
         </p>
 
-        <h2 className="text-2xl font-bold text-primary-900 mt-8 mb-4">
-          Contact Us
-        </h2>
-        <p className="mb-4">
-          If you have any questions about this Privacy Policy, please contact
-          us:
+        <h2 className="text-xl font-semibold mt-8 mb-2">Contact Us</h2>
+        <p>
+          If you have any questions about this Privacy Policy, please contact us
+          at{" "}
+          <a
+            href="mailto:Contact@thevedhasolutions.com"
+            className="text-primary-500 underline"
+          >
+            Contact@thevedhasolutions.com
+          </a>
+          .
         </p>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>
-            By email:{" "}
-            <a
-              href="mailto:privacy@vedhasolutions.com"
-              className="text-primary-500 hover:text-primary-600 underline"
-            >
-              privacy@vedhasolutions.com
-            </a>
-          </li>
-          <li>By mail: [Your Company Full Address Here]</li>
-        </ul>
       </div>
     </div>
   );
