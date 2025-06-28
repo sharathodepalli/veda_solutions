@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import settingsData from "../data/settings.json";
 
-// CORRECTED: Added a type annotation for the 'data' parameter.
+// FIXED: Added a type annotation for the 'data' parameter.
 const encode = (data: Record<string, string>) => {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -33,12 +33,13 @@ export const Contact: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // This is the new submission handler using fetch
+  // FIXED: The manual submission handler using fetch, targeting the correct URL.
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent the default browser form submission
 
-    // Manually submit the form data to Netlify
-    fetch("/", {
+    // Manually submit the form data to Netlify, targeting the form's page URL.
+    fetch("/contact", {
+      // CHANGED: Target the correct page path
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
