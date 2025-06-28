@@ -1,24 +1,12 @@
+// netlify/functions/submit-form.js
 
-/**
- * Universal Netlify Serverless Function to handle form submissions from multiple forms.
- * It parses the form data, dynamically sets the email subject,
- * forwards the data to Formspree for email notifications, and
- * includes specific logic for the newsletter form to interact with a mailing list API.
- *
- * This function handles POST requests from forms submitted via client-side JavaScript (fetch).
- *
- * Prerequisites:
- * 1. `node-fetch` installed as a dependency in your project's `package.json`: `npm install node-fetch`
- * 2. Formspree.io account and a form endpoint URL (e.g., https://formspree.io/f/yourFormspreeEndpoint)
- * 3. (Optional, for newsletter) Mailing list service API URL (e.g., Mailchimp, ConvertKit)
- * 4. (Optional, for newsletter) Mailing list API Key set as a Netlify Environment Variable
- * (e.g., `MAILING_LIST_API_KEY`). NEVER hardcode API keys.
- */
+// FIXED: Using a wrapper function for dynamic import to avoid top-level await issue.
+// This ensures compatibility with CommonJS bundling in Netlify Functions.
 
-// Dynamically import node-fetch. This addresses the "require() of ES Module ... not supported" error.
-// node-fetch is needed for older Node.js runtimes or if the global fetch isn.t available consistently.
-// In newer Node versions (18+), global fetch is available, but this import ensures compatibility.
-const { default: fetch } = await import('node-fetch');
+// This is a wrapper function to enable dynamic import of node-fetch in a CJS context.
+// It allows us to use 'fetch' directly within the handler.
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 
 exports.handler = async (event, context) => {
   // Ensure the function only processes POST requests for security and correctness.
@@ -32,11 +20,9 @@ exports.handler = async (event, context) => {
 
   try {
     // Parse the URL-encoded form data from the request body.
-    // event.body contains the string representation of the form data.
     const formData = new URLSearchParams(event.body);
     const data = {};
     for (const [key, value] of formData.entries()) {
-      // Basic sanitization/trimming can be added here if needed for specific fields.
       data[key] = value;
     }
 
@@ -71,7 +57,6 @@ exports.handler = async (event, context) => {
         if (newsletterEmail && process.env.MAILING_LIST_API_KEY) {
           try {
             // Replace with your actual Mailing List Service API URL and payload structure.
-            // This is a placeholder example for Mailchimp, ConvertKit, etc.
             const mailingListApiUrl = "https://api.your-mailing-list-service.com/add-subscriber"; // <<< REPLACE THIS URL
             const mailingListApiKey = process.env.MAILING_LIST_API_KEY; // Fetched from Netlify Environment Variables
 
@@ -79,13 +64,11 @@ exports.handler = async (event, context) => {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                // Authentication header as required by your mailing list service API
                 "Authorization": `Bearer ${mailingListApiKey}` 
               },
               body: JSON.stringify({
                 email_address: newsletterEmail,
                 status: 'subscribed', // or 'pending' for double opt-in
-                // Add any other required fields for your mailing list service
               }),
             });
 
@@ -107,20 +90,19 @@ exports.handler = async (event, context) => {
     }
 
     // --- Forward data to Formspree for email notifications ---
-    // Formspree requires a '_subject' field to set the email subject.
     const payloadForFormspree = {
       ...data,
       _subject: emailSubject,
     };
 
     // Replace 'yourFormspreeEndpoint' with the actual Formspree URL from your Formspree dashboard.
-    const formspreeEndpoint = "https://formspree.io/f/yourFormspreeEndpoint"; // <<< REPLACE THIS URL
+    const formspreeEndpoint = "https://formspree.io/f/xgvyrdod"; // <<< REPLACE THIS URL
 
     const formspreeResponse = await fetch(formspreeEndpoint, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Formspree prefers JSON for this setup
-        "Accept": "application/json" // Good practice to include Accept header
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       },
       body: JSON.stringify(payloadForFormspree),
     });
@@ -128,15 +110,14 @@ exports.handler = async (event, context) => {
     if (formspreeResponse.ok) {
       console.log(`Successfully forwarded submission from '${formName}' to Formspree for email.`);
       return {
-        statusCode: 204, // 204 No Content is standard for successful processing without a response body.
+        statusCode: 204,
         body: "",
       };
     } else {
       const errorBody = await formspreeResponse.text();
       console.error(`Formspree submission failed (Status: ${formspreeResponse.status}):`, errorBody);
-      // Return a 500 status to indicate an issue with the email forwarding, but the function processed the form.
       return {
-        statusCode: 500, // Or a more specific status code if Formspree provides useful ones.
+        statusCode: 500,
         body: JSON.stringify({ message: `Failed to send email via Formspree: ${formspreeResponse.statusText}` }),
       };
     }
